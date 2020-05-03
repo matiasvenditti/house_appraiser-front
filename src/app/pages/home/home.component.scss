@@ -1,0 +1,98 @@
+.row {
+    width: 100%;
+}
+
+.column-left {
+    float: left;
+    width: 10%;
+}
+
+.column-right {
+    float: right;
+    width: 90%;
+}
+
+.left {
+    left: 0;
+}
+
+.top {
+    top: 0;
+}
+
+.menu {
+    padding: 20px;
+    height: 100%;
+    box-sizing: border-box;
+    position: absolute;
+    background-color: white;
+}
+
+.shadow {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.menu-icon-container {
+    display: block;
+    text-align: center;
+}
+
+.action-container {
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+}
+
+.action-container:hover {
+    cursor: pointer;
+}
+
+.vertical-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// Menu Item deactivated
+
+.unactive:hover {
+    background-color: #F6F7F8;
+    fill: #5843BE;
+}
+
+.unactive:hover label {
+    color: #5843BE;
+}
+.unactive:hover .vertical-center .icon {
+    fill: #5843BE
+}
+
+// Menu Item Activated
+
+.current {
+    background-color: #5843BE;
+    fill: white;
+    color: white;
+}
+
+.current label {
+    color: white;
+}
+
+.current .vertical-center .icon {
+    fill: white;
+}
+
+.margin-left {
+    margin-left: 15px;
+}
+
+.margin-bottom {
+    margin-bottom: 30px;
+}
+
+.center {
+    position: relative;
+    top: 40%;
+}
