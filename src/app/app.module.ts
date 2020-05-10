@@ -14,6 +14,8 @@ import { InlineSVGModule } from 'ng-inline-svg';
 import { HttpClientModule } from '@angular/common/http';
 import { LineAreaComponent } from './components/charts/line-area/line-area.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { BubbleMapComponent } from './components/charts/bubble-map/bubble-map.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,10 +24,12 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     HomeComponent,
     DashboardComponent,
     PricingComponent,
-    LineAreaComponent
+    LineAreaComponent,
+    BubbleMapComponent
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     RouterModule,
