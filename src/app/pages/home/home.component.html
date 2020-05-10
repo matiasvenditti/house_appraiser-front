@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="column-left">
+        <!-- <app-side-bar (menuToggleEmitter)="toggle()"></app-side-bar> -->
+
+
+        <div [@openClose]="menuIsOpen ? 'menu-open' : 'menu-closed'" class="menu left top shadow">
+            <div class="menu-icon-container">
+                <div class="action-container unactive" (click)="toggle()">
+                    <div class="vertical-center">
+                        <div class="icon" [inlineSVG]="menuLinks[0]?.icon"></div>
+                        <label class="margin-left" *ngIf="menuIsOpen">{{menuLinks[0]?.label}}</label>    
+                    </div>
+                </div>
+            </div>
+        
+            <div class="center">
+                <div *ngFor="let link of menuLinks | slice:1" class="menu-icon-container margin-bottom">
+                    <div [ngClass]="{'current' : link.active, 'unactive' : !link.active}" class="action-container" [routerLink]='[{ outlets: { menuRouter: [link.route] } }]' (click)="select(link)">
+                        <div class="vertical-center">
+                            <div class="icon" [inlineSVG]="link.icon"></div>
+                            <label class="margin-left" *ngIf="menuIsOpen">{{link.label}}</label>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div [@openClose]="contentIsOpen ? 'content-open' : 'content-closed'" class="column-right">
+        <router-outlet name="menuRouter"></router-outlet>
+    </div>
+</div>
