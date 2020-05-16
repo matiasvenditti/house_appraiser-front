@@ -1,49 +1,87 @@
-<p>pricing works!</p>
-<form [formGroup]="prediction" (submit)="predict()">
-    <label>
-        Total Surface:
-        <input type="number" formControlName="total_surface">    
-    </label>
+<div class="background">
+    <h1 class="title">Pricing</h1>
 
-    <label>
-        Covered Surface:
-        <input type="number" formControlName="covered_surface">    
-    </label>
+    <form [formGroup]="prediction" (submit)="predict()">
+        <h3>Dimentions</h3>
+        <mat-grid-list cols="2" rowHeight="100px" [gutterSize]="'40px'">
+            <mat-grid-tile *ngFor="let input of dimentions">
+                <app-input-card [input]="input"></app-input-card>
+            </mat-grid-tile>
+        </mat-grid-list>
 
-    <label>
-        Rooms:
-        <input type="number" formControlName="rooms">    
-    </label>
+        <h3>Equipment</h3>
+        <mat-grid-list cols="3" rowHeight="100px" [gutterSize]="'40px'">
+            <mat-grid-tile *ngFor="let input of equipment">
+                <app-input-card [input]="input"></app-input-card>
+            </mat-grid-tile>
+        </mat-grid-list>
 
-    <label>
-        Bathrooms:
-        <input type="number" formControlName="bathrooms">    
-    </label>
+        <h3>Bathroom</h3>
+        <mat-grid-list cols="2" rowHeight="100px" [gutterSize]="'40px'">
+            <mat-grid-tile *ngFor="let input of bathroom">
+                <app-input-card [input]="input"></app-input-card>
+            </mat-grid-tile>
+        </mat-grid-list>
 
-    <label>
-        Garages:
-        <input type="number" formControlName="garages">    
-    </label>
+        <h3>Location</h3>
+        <mat-grid-list cols="1" rowHeight="100px" [gutterSize]="'40px'">
+            <mat-grid-tile>
+                <app-input-card [input]="zone"></app-input-card>
+            </mat-grid-tile>
+        </mat-grid-list>
 
-    <label>
-        Bedrooms:
-        <input type="number" formControlName="bedrooms">
-    </label>
-
-    <label>
-        Toilettes:
-        <input type="number" formControlName="toilettes">
-    </label>
+        <h3>Additional Info</h3>
+        <mat-grid-list cols="1" rowHeight="100px" [gutterSize]="'40px'">
+            <mat-grid-tile>
+                <app-input-card [input]="antiquity"></app-input-card>
+            </mat-grid-tile>
+        </mat-grid-list>
+        
+        <label>
+            Total Surface:
+            <input type="number" formControlName="total_surface">    
+        </label>
     
-    <label>
-        Antiquity:
-        <input type="number" formControlName="antiquity">
-    </label>
-
-    <label>
-        Zone:
-        <input type="text" formControlName="zone">
-    </label>
+        <label>
+            Covered Surface:
+            <input type="number" formControlName="covered_surface">    
+        </label>
     
-    <button>Predict</button>
-</form>
+        <label>
+            Rooms:
+            <input type="number" formControlName="rooms">    
+        </label>
+    
+        <label>
+            Bathrooms:
+            <input type="number" formControlName="bathrooms">    
+        </label>
+    
+        <label>
+            Garages:
+            <input type="number" formControlName="garages">    
+        </label>
+    
+        <label>
+            Bedrooms:
+            <input type="number" formControlName="bedrooms">
+        </label>
+    
+        <label>
+            Toilettes:
+            <input type="number" formControlName="toilettes">
+        </label>
+        
+        <label>
+            Antiquity:
+            <input type="number" formControlName="antiquity">
+        </label>
+    
+        <label>
+            Zone:
+            <input type="text" formControlName="zone">
+        </label>
+        
+        <button>Predict</button>
+    </form>
+</div>

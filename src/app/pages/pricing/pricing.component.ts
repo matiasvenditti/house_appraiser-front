@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PredictionService } from 'src/app/services/prediction.service';
+import { CardInput } from 'src/model/CardInput';
 
 @Component({
   selector: 'app-pricing',
@@ -8,6 +9,25 @@ import { PredictionService } from 'src/app/services/prediction.service';
   styleUrls: ['./pricing.component.scss']
 })
 export class PricingComponent implements OnInit {
+  dimentions: CardInput[] = [
+    new CardInput("text", "Total Surface", null),
+    new CardInput("text", "Covered Surface", null),
+  ];
+
+  equipment: CardInput[] = [
+    new CardInput("number", "Rooms", null),
+    new CardInput("number", "Garages", null),
+    new CardInput("number", "Bedrooms", null),
+  ];
+
+  bathroom: CardInput[] = [
+    new CardInput("number", "Bathrooms", null),
+    new CardInput("number", "Toilettes", null),
+  ];
+
+  zone: CardInput = new CardInput("text", "Zone", null);
+
+  antiquity: CardInput = new CardInput("text", "Antiquity", null);
 
   prediction: FormGroup;
 

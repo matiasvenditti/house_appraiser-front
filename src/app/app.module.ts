@@ -16,6 +16,8 @@ import { LineAreaComponent } from './components/charts/line-area/line-area.compo
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { BubbleMapComponent } from './components/charts/bubble-map/bubble-map.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { InputCardComponent } from './components/input-card/input-card.component';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     DashboardComponent,
     PricingComponent,
     LineAreaComponent,
-    BubbleMapComponent
+    BubbleMapComponent,
+    InputCardComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     RouterModule,
     HttpClientModule,
     InlineSVGModule.forRoot(),
-    NgxChartsModule
+    NgxChartsModule,
+    MatGridListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
