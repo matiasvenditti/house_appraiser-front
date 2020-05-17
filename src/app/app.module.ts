@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { HomeComponent } from './pages/home/home.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,17 +17,23 @@ import { BubbleMapComponent } from './components/charts/bubble-map/bubble-map.co
 import { ReactiveFormsModule } from '@angular/forms';
 import { InputCardComponent } from './components/input-card/input-card.component';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { SummaryItemComponent } from './components/summary-item/summary-item.component';
+import { SummaryPipe } from './pipes/summary.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SideBarComponent,
     HomeComponent,
     DashboardComponent,
     PricingComponent,
     LineAreaComponent,
     BubbleMapComponent,
-    InputCardComponent
+    InputCardComponent,
+    SideNavComponent,
+    SummaryItemComponent,
+    SummaryPipe
   ],
   imports: [
     BrowserModule,
@@ -40,6 +45,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     InlineSVGModule.forRoot(),
     NgxChartsModule,
     MatGridListModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]

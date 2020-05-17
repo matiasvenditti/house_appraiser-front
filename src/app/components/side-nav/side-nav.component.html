@@ -1,0 +1,27 @@
+<mat-sidenav-container [autosize]="true">
+    <mat-sidenav opened mode="side" position="start" disableClose="true">
+        <div class="menu-icon-container">
+            <div class="action-container unactive" (click)="toggle()">
+                <div class="vertical-center">
+                    <div class="icon" [inlineSVG]="menuLinks[0]?.icon"></div>
+                    <label class="margin-left" *ngIf="menuIsOpen">{{menuLinks[0]?.label}}</label>    
+                </div>
+            </div>
+        </div>
+    
+        <div class="center">
+            <div *ngFor="let link of menuLinks | slice:1" class="menu-icon-container margin-bottom">
+                <div [ngClass]="{'current' : link.active, 'unactive' : !link.active}" class="action-container" [routerLink]='[{ outlets: { menuRouter: [link.route] } }]' (click)="select(link)">
+                    <div class="vertical-center">
+                        <div class="icon" [inlineSVG]="link.icon"></div>
+                        <label class="margin-left" *ngIf="menuIsOpen">{{link.label}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+        <router-outlet name="menuRouter"></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
