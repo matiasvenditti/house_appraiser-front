@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
 import { CardInput } from 'src/model/CardInput';
 
 @Component({
@@ -15,6 +15,9 @@ export class InputCardComponent implements OnInit {
   index: number;
 
   @ViewChild('myInput') formInput;
+
+  @Output()
+  inputEmitter: EventEmitter<boolean> = new EventEmitter();
 
   fill: string = "assets/icons/fill.svg";
   error: string = "assets/icons/error.svg";
@@ -51,7 +54,8 @@ export class InputCardComponent implements OnInit {
     this.formInput.nativeElement.focus();
   }
 
-  setState(): string {
+  setState() {
+    console.log(this.input.formControl.invalid);
     if (this.input.formControl.invalid && this.input.formControl.touched) {
       this.isError = true;
       this.isSuccess = false;
@@ -69,8 +73,11 @@ export class InputCardComponent implements OnInit {
       this.isSuccess = false;
       this.setFill();
     }
+  }
 
-    return this.state;
+  onBlur() {
+    this.inputEmitter.emit();
+    this.setState();
   }
 
 }

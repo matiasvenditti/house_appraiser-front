@@ -18,6 +18,8 @@ import { BubbleMapComponent } from './components/charts/bubble-map/bubble-map.co
 import { ReactiveFormsModule } from '@angular/forms';
 import { InputCardComponent } from './components/input-card/input-card.component';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     PricingComponent,
     LineAreaComponent,
     BubbleMapComponent,
-    InputCardComponent
+    InputCardComponent,
+    SideNavComponent
   ],
   imports: [
     BrowserModule,
@@ -40,6 +43,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     InlineSVGModule.forRoot(),
     NgxChartsModule,
     MatGridListModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]

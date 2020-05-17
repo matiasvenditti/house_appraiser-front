@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PredictionService } from 'src/app/services/prediction.service';
 import { CardInput } from 'src/model/CardInput';
+import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-pricing',
@@ -31,6 +32,12 @@ export class PricingComponent implements OnInit {
 
   prediction: FormGroup;
 
+  dimensionCols: number;
+  equipmentCols: number;
+  bathroomCols: number;
+
+  sideMenuMode: string;
+
   constructor(private fb: FormBuilder, private predictionService: PredictionService) {
     this.prediction = this.fb.group({
       total_surface: [null, [Validators.required, Validators.min(0)]],
@@ -48,6 +55,12 @@ export class PricingComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.setLayout(window.innerWidth);
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.setLayout(event.target.innerWidth);
   }
 
   predict() {
@@ -68,4 +81,23 @@ export class PricingComponent implements OnInit {
   initializeControl(input: CardInput) {
     input.formControl = this.prediction.controls[input.controlName];
   }
+
+  checkForm(element: MatSidenav) {
+    element.open();
+  }
+
+  setLayout(width) {
+    if (width <= 700) {
+      this.dimensionCols = 1;
+      this.equipmentCols = 1;
+      this.bathroomCols = 1;
+      this.sideMenuMode = "over";
+    } else {
+      this.dimensionCols = 2;
+      this.equipmentCols = 3;
+      this.bathroomCols = 2;
+      this.sideMenuMode = "side";
+    }
+  }
 }
+

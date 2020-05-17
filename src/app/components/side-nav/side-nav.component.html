@@ -1,0 +1,30 @@
+<div class="example-container">
+    <!-- <mat-toolbar class="example-toolbar">
+      <mat-icon (click)="isExpanded = !isExpanded">menu</mat-icon>
+			<span class="example-fill-remaining-space"></span>
+      <mat-icon>logout</mat-icon>
+        </mat-toolbar> -->
+        
+        <button (click)="isExpanded = !isExpanded">Toggle</button>
+
+	<mat-sidenav-container  class="example-sidenav-container" autosize>
+		<mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true">
+			
+                <div (click)="toggleActive($event)">
+                    <img src="assets/icons/success.svg">
+                    <p *ngIf="isExpanded">Name</p>
+                </div>
+
+                <div (click)="toggleActive($event)">
+                    <img src="assets/icons/success.svg">
+                    <p *ngIf="isExpanded">Name</p>
+                </div>
+            
+        </mat-sidenav>
+
+    <div class="example-sidenav-content">
+        Main Content Goes Here !!!
+    </div>
+
+	</mat-sidenav-container>
+</div>
