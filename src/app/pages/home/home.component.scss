@@ -50,20 +50,6 @@
     justify-content: center;
 }
 
-// Menu Item deactivated
-
-.unactive:hover {
-    background-color: #F6F5FC;
-    fill: #5843BE;
-}
-
-.unactive:hover label {
-    color: #5843BE;
-}
-.unactive:hover .vertical-center .icon {
-    fill: #5843BE
-}
-
 // Menu Item Activated
 
 .current {

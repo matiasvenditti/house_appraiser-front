@@ -33,7 +33,6 @@ export class InputCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.input?.formControl.valueChanges.subscribe(change => {
-      console.log(change);
       this.setState();
     });
   }
@@ -55,7 +54,6 @@ export class InputCardComponent implements OnInit {
   }
 
   setState() {
-    console.log(this.input.formControl.invalid);
     if (this.input.formControl.invalid && this.input.formControl.touched) {
       this.isError = true;
       this.isSuccess = false;

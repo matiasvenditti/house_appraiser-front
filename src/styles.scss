@@ -21,10 +21,39 @@ html, body {
 
 .background {
     // position: absolute;
-    padding: 20px 40px;
+    padding: 40px;
     height: 100%;
     width: 100%;
     background-color: #F6F5FC;
+}
+
+// Menu Item deactivated
+
+.unactive:hover {
+    background-color: #F6F5FC;
+    fill: #5843BE;
+}
+
+.unactive:hover label, .unactive:hover h3 {
+    color: #5843BE;
+}
+.unactive:hover .vertical-center .icon {
+    fill: #5843BE
+}
+
+.button {
+    background-color: #5843BE;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    padding: 20px;
+    box-sizing: border-box;
+    font-size: 16px;
+    outline: none;
+}
+
+.button:hover {
+    cursor: pointer;
 }
 
 @font-face {

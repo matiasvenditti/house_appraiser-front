@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PredictionService } from 'src/app/services/prediction.service';
 import { CardInput } from 'src/model/CardInput';
 import { MatSidenav } from '@angular/material/sidenav';
+import { HttpEventType } from '@angular/common/http';
+import { SummaryItem } from 'src/model/SummaryItem';
 
 @Component({
   selector: 'app-pricing',
@@ -26,9 +28,8 @@ export class PricingComponent implements OnInit {
     new CardInput("number", "Toilettes", null, "toilettes", "Insert number of toilettes", "assets/icons/toilettes.svg"),
   ];
 
-  zone: CardInput = new CardInput("text", "Zone", null, "zone", "Select house zone", "assets/icons/zone.svg");
-
-  antiquity: CardInput = new CardInput("number", "Antiquity", null, "antiquity", "Specify house antiquity", "assets/icons/antiquity.svg");
+  zone: CardInput[] = [new CardInput("text", "Zone", null, "zone", "Select house zone", "assets/icons/zone.svg")];
+  antiquity: CardInput[] = [new CardInput("number", "Antiquity", null, "antiquity", "Specify house antiquity", "assets/icons/antiquity.svg")];
 
   prediction: FormGroup;
 
@@ -37,6 +38,8 @@ export class PricingComponent implements OnInit {
   bathroomCols: number;
 
   sideMenuMode: string;
+
+  results: SummaryItem[];
 
   constructor(private fb: FormBuilder, private predictionService: PredictionService) {
     this.prediction = this.fb.group({
@@ -64,9 +67,8 @@ export class PricingComponent implements OnInit {
   }
 
   predict() {
-    console.log(this.prediction.value);
-    this.predictionService.predict(this.prediction.value).subscribe(response => {
-      console.log(response);
+    this.predictionService.predict(this.prediction.value).subscribe((response: any) => {
+      this.results = [new SummaryItem("Result", response.price)];
     })
   }
 
@@ -74,16 +76,24 @@ export class PricingComponent implements OnInit {
     this.dimentions.map(this.initializeControl.bind(this));
     this.equipment.map(this.initializeControl.bind(this));
     this.bathroom.map(this.initializeControl.bind(this));
-    this.initializeControl(this.zone);
-    this.initializeControl(this.antiquity);
+    this.zone.map(this.initializeControl.bind(this));
+    this.antiquity.map(this.initializeControl.bind(this));
   }
 
   initializeControl(input: CardInput) {
     input.formControl = this.prediction.controls[input.controlName];
   }
 
-  checkForm(element: MatSidenav) {
-    element.open();
+  openSummary(summary: MatSidenav) {
+    summary.open();
+  }
+
+  closeSummary(summary: MatSidenav) {
+    summary.close();
+  }
+
+  toggleSummary(summary: MatSidenav) {
+    summary.toggle();
   }
 
   setLayout(width) {
@@ -98,6 +108,10 @@ export class PricingComponent implements OnInit {
       this.bathroomCols = 2;
       this.sideMenuMode = "side";
     }
+  }
+
+  toSummaryItems(items: CardInput[]): SummaryItem[] {
+    return items.map(item => new SummaryItem(item.label, item.formControl.value));
   }
 }
 

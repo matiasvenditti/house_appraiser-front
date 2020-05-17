@@ -20,6 +20,8 @@ import { InputCardComponent } from './components/input-card/input-card.component
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { SummaryItemComponent } from './components/summary-item/summary-item.component';
+import { SummaryPipe } from './pipes/summary.pipe';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { SideNavComponent } from './components/side-nav/side-nav.component';
     LineAreaComponent,
     BubbleMapComponent,
     InputCardComponent,
-    SideNavComponent
+    SideNavComponent,
+    SummaryItemComponent,
+    SummaryPipe
   ],
   imports: [
     BrowserModule,

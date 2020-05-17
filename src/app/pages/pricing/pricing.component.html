@@ -1,51 +1,64 @@
 <mat-sidenav-container>
-    <mat-sidenav #summary [mode]="sideMenuMode" position="end">Summary
-        <div class="center">
-            <h3>Summary</h3>
-            <img class="icon" src="assets/icons/exit.svg">
+    <mat-sidenav #summary [mode]="sideMenuMode" position="end">
+        <div class="center unactive margin-bot" (click)="closeSummary(summary)">
+            <h3>Summary</h3>    
+            <div class="icon" [inlineSVG]="'assets/icons/exit.svg'"></div>
         </div>
+        <div class="relative">
+            <app-summary-item [items]="toSummaryItems(dimentions)" [result]="false"></app-summary-item>
+            <app-summary-item [items]="toSummaryItems(equipment)" [result]="false"></app-summary-item>
+            <app-summary-item [items]="toSummaryItems(bathroom)" [result]="false"></app-summary-item>
+            <app-summary-item [items]="toSummaryItems(zone)" [result]="false"></app-summary-item>
+            <app-summary-item [items]="toSummaryItems(antiquity)" [result]="false"></app-summary-item>
+            <app-summary-item *ngIf="results" [items]="results" [result]="true"></app-summary-item>
+            <button class="button submit" (click)="predict()">Predict</button>
+        </div>
+
     </mat-sidenav>
     <mat-sidenav-content>
         <div class="background">
-            <h1 class="title">Pricing</h1>
+            <div>
+                <h1 class="title">Pricing</h1>
+                <button class="button" (click)="toggleSummary(summary)">
+                    <div class="icon" [inlineSVG]="'assets/icons/summary.svg'"></div>
+                </button>
+            </div>
         
             <form [formGroup]="prediction" (submit)="predict()">
                 <h3>Dimentions</h3>
                 <mat-grid-list [cols]="dimensionCols" rowHeight="100px" [gutterSize]="'40px'">
                     <mat-grid-tile *ngFor="let input of dimentions">
-                        <app-input-card (inputEmitter)="checkForm(summary)" [input]="input"></app-input-card>
+                        <app-input-card (inputEmitter)="openSummary(summary)" [input]="input"></app-input-card>
                     </mat-grid-tile>
                 </mat-grid-list>
         
                 <h3>Equipment</h3>
                 <mat-grid-list [cols]="equipmentCols" rowHeight="100px" [gutterSize]="'40px'">
                     <mat-grid-tile *ngFor="let input of equipment">
-                        <app-input-card (inputEmitter)="checkForm(summary)" [input]="input"></app-input-card>
+                        <app-input-card (inputEmitter)="openSummary(summary)" [input]="input"></app-input-card>
                     </mat-grid-tile>
                 </mat-grid-list>
         
                 <h3>Bathroom</h3>
                 <mat-grid-list [cols]="bathroomCols" rowHeight="100px" [gutterSize]="'40px'">
                     <mat-grid-tile *ngFor="let input of bathroom">
-                        <app-input-card (inputEmitter)="checkForm(summary)" [input]="input"></app-input-card>
+                        <app-input-card (inputEmitter)="openSummary(summary)" [input]="input"></app-input-card>
                     </mat-grid-tile>
                 </mat-grid-list>
         
                 <h3>Location</h3>
                 <mat-grid-list cols="1" rowHeight="100px" [gutterSize]="'40px'">
-                    <mat-grid-tile>
-                        <app-input-card (inputEmitter)="checkForm(summary)" [input]="zone"></app-input-card>
+                    <mat-grid-tile *ngFor="let input of zone">
+                        <app-input-card (inputEmitter)="openSummary(summary)" [input]="input"></app-input-card>
                     </mat-grid-tile>
                 </mat-grid-list>
         
                 <h3>Additional Info</h3>
                 <mat-grid-list cols="1" rowHeight="100px" [gutterSize]="'40px'">
-                    <mat-grid-tile>
-                        <app-input-card (inputEmitter)="checkForm(summary)" [input]="antiquity"></app-input-card>
+                    <mat-grid-tile *ngFor="let input of antiquity">
+                        <app-input-card (inputEmitter)="openSummary(summary)" [input]="input"></app-input-card>
                     </mat-grid-tile>
                 </mat-grid-list>
-                
-                <button>Predict</button>
             </form>
         </div>
     </mat-sidenav-content>
