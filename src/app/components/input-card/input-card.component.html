@@ -5,8 +5,8 @@
         </div>
         <div class="input-switch" [ngSwitch]="input.type">
             <label>{{input?.label}}</label>
-            <input #myInput [id]="index" *ngSwitchCase="'number'" type="number" [formControl]="input.formControl" (blur)="onBlur()" placeholder="{{input.placeholder}}">
-            <input #myInput [id]="index" *ngSwitchCase="'text'" type="text" [formControl]="input.formControl" (blur)="onBlur()" placeholder="{{input.placeholder}}">
+            <input #myInput [id]="index" *ngSwitchCase="'number'" type="number" [formControl]="input.formControl" (change)="onChange()" (blur)="onBlur()" placeholder="{{input.placeholder}}">
+            <input #myInput [id]="index" *ngSwitchCase="'text'" type="text" [formControl]="input.formControl" (change)="onChange()" (blur)="onBlur()" placeholder="{{input.placeholder}}">
         </div>
 
         <div class="icon-column-right">

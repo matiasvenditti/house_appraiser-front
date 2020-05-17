@@ -33,6 +33,7 @@ export class InputCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.input?.formControl.valueChanges.subscribe(change => {
+      this.inputEmitter.emit();
       this.setState();
     });
   }
@@ -74,8 +75,11 @@ export class InputCardComponent implements OnInit {
   }
 
   onBlur() {
-    this.inputEmitter.emit();
     this.setState();
+  }
+
+  onChange() {
+    // this.inputEmitter.emit();
   }
 
 }

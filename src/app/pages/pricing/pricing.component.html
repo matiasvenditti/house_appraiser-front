@@ -1,5 +1,5 @@
 <mat-sidenav-container>
-    <mat-sidenav #summary [mode]="sideMenuMode" position="end">
+    <mat-sidenav (closedStart)="onClose()" #summary [mode]="sideMenuMode" position="end">
         <div class="center unactive margin-bot" (click)="closeSummary(summary)">
             <h3>Summary</h3>    
             <div class="icon" [inlineSVG]="'assets/icons/exit.svg'"></div>
@@ -11,52 +11,50 @@
             <app-summary-item [items]="toSummaryItems(zone)" [result]="false"></app-summary-item>
             <app-summary-item [items]="toSummaryItems(antiquity)" [result]="false"></app-summary-item>
             <app-summary-item *ngIf="results" [items]="results" [result]="true"></app-summary-item>
-            <button class="button submit" (click)="predict()">Predict</button>
+            <button [@emptyFull]="isEmpty ? 'empty' : 'full'" class="button submit" (click)="predict()">Predict</button>
         </div>
 
     </mat-sidenav>
     <mat-sidenav-content>
         <div class="background">
-            <div>
+            <div class="vertical-center">
                 <h1 class="title">Pricing</h1>
-                <button class="button" (click)="toggleSummary(summary)">
-                    <div class="icon" [inlineSVG]="'assets/icons/summary.svg'"></div>
-                </button>
+                <div (click)="toggleSummary(summary)" class="toggle icon" [inlineSVG]="'assets/icons/summary.svg'"></div>
             </div>
         
             <form [formGroup]="prediction" (submit)="predict()">
                 <h3>Dimentions</h3>
                 <mat-grid-list [cols]="dimensionCols" rowHeight="100px" [gutterSize]="'40px'">
                     <mat-grid-tile *ngFor="let input of dimentions">
-                        <app-input-card (inputEmitter)="openSummary(summary)" [input]="input"></app-input-card>
+                        <app-input-card (inputEmitter)="checkForm(summary)" [input]="input"></app-input-card>
                     </mat-grid-tile>
                 </mat-grid-list>
         
                 <h3>Equipment</h3>
                 <mat-grid-list [cols]="equipmentCols" rowHeight="100px" [gutterSize]="'40px'">
                     <mat-grid-tile *ngFor="let input of equipment">
-                        <app-input-card (inputEmitter)="openSummary(summary)" [input]="input"></app-input-card>
+                        <app-input-card (inputEmitter)="checkForm(summary)" [input]="input"></app-input-card>
                     </mat-grid-tile>
                 </mat-grid-list>
         
                 <h3>Bathroom</h3>
                 <mat-grid-list [cols]="bathroomCols" rowHeight="100px" [gutterSize]="'40px'">
                     <mat-grid-tile *ngFor="let input of bathroom">
-                        <app-input-card (inputEmitter)="openSummary(summary)" [input]="input"></app-input-card>
+                        <app-input-card (inputEmitter)="checkForm(summary)" [input]="input"></app-input-card>
                     </mat-grid-tile>
                 </mat-grid-list>
         
                 <h3>Location</h3>
                 <mat-grid-list cols="1" rowHeight="100px" [gutterSize]="'40px'">
                     <mat-grid-tile *ngFor="let input of zone">
-                        <app-input-card (inputEmitter)="openSummary(summary)" [input]="input"></app-input-card>
+                        <app-input-card (inputEmitter)="checkForm(summary)" [input]="input"></app-input-card>
                     </mat-grid-tile>
                 </mat-grid-list>
         
                 <h3>Additional Info</h3>
                 <mat-grid-list cols="1" rowHeight="100px" [gutterSize]="'40px'">
                     <mat-grid-tile *ngFor="let input of antiquity">
-                        <app-input-card (inputEmitter)="openSummary(summary)" [input]="input"></app-input-card>
+                        <app-input-card (inputEmitter)="checkForm(summary)" [input]="input"></app-input-card>
                     </mat-grid-tile>
                 </mat-grid-list>
             </form>

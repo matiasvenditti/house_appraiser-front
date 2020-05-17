@@ -50,6 +50,33 @@ mat-sidenav {
     height: 90%;
 }
 
-.icon svg {
-    fill: white;
+.toggle {
+    margin-left: auto;
+    background-color: #5843BE;
+    border-radius: 10px;
+    padding: 10px;
 }
+
+.toggle:hover {
+    cursor: pointer;
+}
+
+.icon svg {
+    fill: white !important;
+}
+
+.vertical-center {
+    display: flex;
+    align-items: center;
+}
+
+.button {
+    background: linear-gradient(to right, #5843BE 50%, #6E5CC7 50%);
+    background-size: 200% 100%;
+    background-position:right bottom;
+    transition:all 1s ease;
+}
+
+// .button:hover {
+//     background-position: left bottom;
+// }

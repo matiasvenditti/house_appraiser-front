@@ -5,11 +5,31 @@ import { CardInput } from 'src/model/CardInput';
 import { MatSidenav } from '@angular/material/sidenav';
 import { HttpEventType } from '@angular/common/http';
 import { SummaryItem } from 'src/model/SummaryItem';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-pricing',
   templateUrl: './pricing.component.html',
-  styleUrls: ['./pricing.component.scss']
+  styleUrls: ['./pricing.component.scss'],
+  animations: [
+    trigger('emptyFull', [
+      state('empty', style({
+        backgroundPosition: 'right bottom'
+      })),
+      state('full', style({
+        backgroundPosition: 'left bottom'
+      })),
+      transition('empty <=> full', [
+        animate('0.7s')
+      ]),
+    ]),
+  ]
 })
 export class PricingComponent implements OnInit {
   dimentions: CardInput[] = [
@@ -41,6 +61,8 @@ export class PricingComponent implements OnInit {
 
   results: SummaryItem[];
 
+  isEmpty: boolean = true;
+
   constructor(private fb: FormBuilder, private predictionService: PredictionService) {
     this.prediction = this.fb.group({
       total_surface: [null, [Validators.required, Validators.min(0)]],
@@ -67,6 +89,7 @@ export class PricingComponent implements OnInit {
   }
 
   predict() {
+    this.isEmpty = false;
     this.predictionService.predict(this.prediction.value).subscribe((response: any) => {
       this.results = [new SummaryItem("Result", response.price)];
     })
@@ -84,16 +107,30 @@ export class PricingComponent implements OnInit {
     input.formControl = this.prediction.controls[input.controlName];
   }
 
-  openSummary(summary: MatSidenav) {
-    summary.open();
+  async openSummary(summary: MatSidenav) {
+    await summary.open();
+    this.getBackgroundAndSetLayout();
   }
 
-  closeSummary(summary: MatSidenav) {
-    summary.close();
+  async closeSummary(summary: MatSidenav) {
+    await summary.close();
+    this.getBackgroundAndSetLayout();
   }
 
-  toggleSummary(summary: MatSidenav) {
-    summary.toggle();
+  async toggleSummary(summary: MatSidenav) {
+    await summary.toggle();
+    this.getBackgroundAndSetLayout();
+  }
+
+  checkForm(summary: MatSidenav) {
+    if (this.prediction.touched && this.prediction.valid) {
+      this.openSummary(summary);
+    }
+  }
+
+  getBackgroundAndSetLayout() {
+    const background = document.querySelector(".background") as HTMLElement;
+    this.setLayout(background.offsetWidth);
   }
 
   setLayout(width) {
@@ -112,6 +149,10 @@ export class PricingComponent implements OnInit {
 
   toSummaryItems(items: CardInput[]): SummaryItem[] {
     return items.map(item => new SummaryItem(item.label, item.formControl.value));
+  }
+
+  onClose() {
+    this.isEmpty = true;
   }
 }
 
