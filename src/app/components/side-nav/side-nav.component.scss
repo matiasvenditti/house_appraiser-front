@@ -1,52 +1,93 @@
-.example-container {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 0;
-    bottom: 0;
+mat-sidenav-container {
+    height: 100vh;
+}
+
+mat-sidenav {
+    padding: 20px;
+}
+
+mat-sidenav {
+    // width: 200px;
+    border: none !important;
+}
+
+.row {
+    width: 100%;
+}
+
+.column-left {
+    float: left;
+    width: 10%;
+}
+
+.column-right {
+    float: right;
+    width: 90%;
+}
+
+.left {
     left: 0;
-    right: 0;
-  }
-  
-   .example-sidenav-container {
-    flex: 1;
-  }
-  
-  .example-sidenav{
-    color: #d36423;
-  }
-  
-  .mat-list-item{
-    color: black;
-    opacity: 0.8;
-  }
-  
-  .mat-drawer{
-    opacity: 0.9;
-    background:White;
-  }
-  
-  .mat-toolbar {
-    opacity: 0.9;
-    background: #e51282;
-    color: white;
-  }
-  
-  .example-sidenav-content {
-    display: flex;
+}
+
+.top {
+    top: 0;
+}
+
+.menu {
+    padding: 20px;
     height: 100%;
+    box-sizing: border-box;
+    position: absolute;
+    background-color: white;
+}
+
+.menu-icon-container {
+    display: block;
+    text-align: center;
+}
+
+.action-container {
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    outline: none;
+}
+
+.action-container:hover {
+    cursor: pointer;
+}
+
+.vertical-center {
+    display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #e8ded7;
-    opacity: 0.9;
-  }
-  
-  .example-toolbar {
-      z-index: 2;
-  }
-  
-  .example-fill-remaining-space {
-    /* This fills the remaining space, by using flexbox. 
-       Every toolbar row uses a flexbox row layout. */
-    flex: 1 1 auto;
-  }
+}
+
+// Menu Item Activated
+
+.current {
+    background-color: #5843BE;
+    fill: white;
+    color: white;
+}
+
+.current label {
+    color: white;
+}
+
+.current .vertical-center .icon {
+    fill: white;
+}
+
+.margin-left {
+    margin-left: 15px;
+}
+
+.margin-bottom {
+    margin-bottom: 30px;
+}
+
+.center {
+    position: relative;
+    top: 40%;
+}

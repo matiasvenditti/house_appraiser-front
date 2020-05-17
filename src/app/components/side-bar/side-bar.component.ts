@@ -38,12 +38,12 @@ export class SideBarComponent implements OnInit {
   menuLinks: MenuItem[];
 
   constructor() {
-    this.menu = new MenuItem("../../../assets/menu.svg", "Menu", null);
+    this.menu = new MenuItem("assets/menu.svg", "Menu", null);
 
     this.menuLinks = [
-      new MenuItem("../../../assets/home.svg", "Home", ""),
-      new MenuItem("../../../assets/bars.svg", "Dashboard", "dashboard"),
-      new MenuItem("../../../assets/business.svg", "Pricing", "pricing"),
+      new MenuItem("assets/home.svg", "Home", ""),
+      new MenuItem("assets/bars.svg", "Dashboard", "dashboard"),
+      new MenuItem("assets/business.svg", "Pricing", "pricing"),
     ]
   }
 

@@ -1,30 +1,27 @@
-<div class="example-container">
-    <!-- <mat-toolbar class="example-toolbar">
-      <mat-icon (click)="isExpanded = !isExpanded">menu</mat-icon>
-			<span class="example-fill-remaining-space"></span>
-      <mat-icon>logout</mat-icon>
-        </mat-toolbar> -->
-        
-        <button (click)="isExpanded = !isExpanded">Toggle</button>
-
-	<mat-sidenav-container  class="example-sidenav-container" autosize>
-		<mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true">
-			
-                <div (click)="toggleActive($event)">
-                    <img src="assets/icons/success.svg">
-                    <p *ngIf="isExpanded">Name</p>
+<mat-sidenav-container [autosize]="true">
+    <mat-sidenav opened mode="side" position="start" disableClose="true">
+        <div class="menu-icon-container">
+            <div class="action-container unactive" (click)="toggle()">
+                <div class="vertical-center">
+                    <div class="icon" [inlineSVG]="menuLinks[0]?.icon"></div>
+                    <label class="margin-left" *ngIf="menuIsOpen">{{menuLinks[0]?.label}}</label>    
                 </div>
-
-                <div (click)="toggleActive($event)">
-                    <img src="assets/icons/success.svg">
-                    <p *ngIf="isExpanded">Name</p>
+            </div>
+        </div>
+    
+        <div class="center">
+            <div *ngFor="let link of menuLinks | slice:1" class="menu-icon-container margin-bottom">
+                <div [ngClass]="{'current' : link.active, 'unactive' : !link.active}" class="action-container" [routerLink]='[{ outlets: { menuRouter: [link.route] } }]' (click)="select(link)">
+                    <div class="vertical-center">
+                        <div class="icon" [inlineSVG]="link.icon"></div>
+                        <label class="margin-left" *ngIf="menuIsOpen">{{link.label}}</label>    
+                    </div>
                 </div>
-            
-        </mat-sidenav>
+            </div>
+        </div>
+    </mat-sidenav>
 
-    <div class="example-sidenav-content">
-        Main Content Goes Here !!!
-    </div>
-
-	</mat-sidenav-container>
-</div>
+    <mat-sidenav-content>
+        <router-outlet name="menuRouter"></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

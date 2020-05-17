@@ -7,12 +7,11 @@ import { SideNavComponent } from './components/side-nav/side-nav.component';
 
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent, children: [
-    // {path: '', component: HomeComponent, outlet: 'menuRouter'},
+  {path: 'sidenav', component: SideNavComponent, children: [
+    {path: 'home', component: HomeComponent},
     {path: 'dashboard', component: DashboardComponent, outlet: 'menuRouter'},
     {path: 'pricing', component: PricingComponent, outlet: 'menuRouter'}
-  ]},
-  {path: 'sidenav', component: SideNavComponent}
+  ]}
 ];
 
 @NgModule({

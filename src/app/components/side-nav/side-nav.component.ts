@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { MenuItem } from 'src/model/MenuItem';
 
 @Component({
   selector: 'app-side-nav',
@@ -7,22 +8,44 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideNavComponent implements OnInit {
 
-  isExpanded = true;
-  element: HTMLElement;
+  contentIsOpen: boolean = true;
+  menuIsOpen: boolean = false;
 
-  constructor() {}
+  menu: MenuItem;
+  menuLinks: MenuItem[];
+
+  current: MenuItem;
+
+  constructor() {
+
+    this.menuLinks = [
+      new MenuItem("../../../assets/menu.svg", "Menu", null),
+      new MenuItem("../../../assets/home.svg", "Home", ""),
+      new MenuItem("../../../assets/bars.svg", "Dashboard", "dashboard"),
+      new MenuItem("../../../assets/business.svg", "Pricing", "pricing"),
+    ];
+
+    this.menu = this.menuLinks[0];
+  }
 
   ngOnInit(): void {
   }
 
-  toggleActive(event:any){
-    debugger;
-    event.preventDefault();
-    if(this.element !== undefined){
-      this.element.style.backgroundColor = "white";
-    } 
-    var target = event.currentTarget;
-    target.style.backgroundColor = "#e51282";
-    this.element = target;
+  toggle() {
+    this.contentIsOpen = !this.contentIsOpen;
+    this.menuIsOpen = !this.menuIsOpen;
+  }
+
+  select(link: MenuItem): void {
+    if (this.current) {
+      this.current.deactivate();  
+    }
+    this.current = link;
+    this.current.activate();
+  }
+
+  toggleAndSelect(link: MenuItem) {
+    this.select(link);
+    this.toggle();
   }
 }
