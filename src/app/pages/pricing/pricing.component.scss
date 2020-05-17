@@ -62,8 +62,9 @@ mat-sidenav {
     cursor: pointer;
 }
 
-.icon svg {
+.icon {
     fill: white !important;
+    border-radius: 5px;
 }
 
 .vertical-center {
@@ -77,15 +78,3 @@ mat-sidenav {
     background-position:right bottom;
     transition:all 1s ease;
 }
-
-#summary {
-    border-radius: 5px;
-}
-
-#summary svg {
-    fill: white !important;
-}
-
-// .button:hover {
-//     background-position: left bottom;
-// }

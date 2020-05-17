@@ -8,7 +8,7 @@ import { SideNavComponent } from './components/side-nav/side-nav.component';
 
 const routes: Routes = [
   {path: 'sidenav', component: SideNavComponent, children: [
-    {path: 'home', component: HomeComponent},
+    {path: 'home', component: HomeComponent, outlet: 'menuRouter'},
     {path: 'dashboard', component: DashboardComponent, outlet: 'menuRouter'},
     {path: 'pricing', component: PricingComponent, outlet: 'menuRouter'}
   ]}

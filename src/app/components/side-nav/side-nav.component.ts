@@ -39,7 +39,7 @@ export class SideNavComponent implements OnInit {
 
     this.menuLinks = [
       new MenuItem("assets/menu.svg", "Menu", null),
-      new MenuItem("assets/home.svg", "Home", ""),
+      new MenuItem("assets/home.svg", "Home", "home"),
       new MenuItem("assets/bars.svg", "Dashboard", "dashboard"),
       new MenuItem("assets/business.svg", "Pricing", "pricing"),
     ];
