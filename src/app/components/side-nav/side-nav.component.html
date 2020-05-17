@@ -14,7 +14,7 @@
                 <div [ngClass]="{'current' : link.active, 'unactive' : !link.active}" class="action-container" [routerLink]='[{ outlets: { menuRouter: [link.route] } }]' (click)="select(link)">
                     <div class="vertical-center">
                         <div class="icon" [inlineSVG]="link.icon"></div>
-                        <label class="margin-left" *ngIf="menuIsOpen">{{link.label}}</label>    
+                        <label class="margin-left" *ngIf="menuIsOpen">{{link.label}}</label>
                     </div>
                 </div>
             </div>

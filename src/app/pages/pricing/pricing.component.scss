@@ -43,6 +43,7 @@ mat-sidenav {
     display: block;
     bottom: 0;
     width: 100%;
+    border-radius: 10px;
 }
 
 .relative {
@@ -75,6 +76,14 @@ mat-sidenav {
     background-size: 200% 100%;
     background-position:right bottom;
     transition:all 1s ease;
+}
+
+#summary {
+    border-radius: 5px;
+}
+
+#summary svg {
+    fill: white !important;
 }
 
 // .button:hover {

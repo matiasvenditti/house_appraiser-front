@@ -29,6 +29,13 @@ import {
         animate('0.7s')
       ]),
     ]),
+
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('0.3s', style({ opacity: 1 })),
+      ])
+    ]),
   ]
 })
 export class PricingComponent implements OnInit {
@@ -56,8 +63,6 @@ export class PricingComponent implements OnInit {
   dimensionCols: number;
   equipmentCols: number;
   bathroomCols: number;
-
-  sideMenuMode: string;
 
   results: SummaryItem[];
 
@@ -138,12 +143,10 @@ export class PricingComponent implements OnInit {
       this.dimensionCols = 1;
       this.equipmentCols = 1;
       this.bathroomCols = 1;
-      this.sideMenuMode = "over";
     } else {
       this.dimensionCols = 2;
       this.equipmentCols = 3;
       this.bathroomCols = 2;
-      this.sideMenuMode = "side";
     }
   }
 

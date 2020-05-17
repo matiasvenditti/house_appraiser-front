@@ -1,14 +1,33 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'src/model/MenuItem';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+} from '@angular/animations';
 
 @Component({
   selector: 'app-side-nav',
   templateUrl: './side-nav.component.html',
-  styleUrls: ['./side-nav.component.scss']
+  styleUrls: ['./side-nav.component.scss'],
+  animations: [
+    trigger('openClose', [
+      state('open', style({
+        width: '200px'
+      })),
+      state('open', style({
+        width: '100px'
+      })),
+      transition('open <=> close', [
+        animate('0.5s')
+      ]),
+    ]),
+  ],
 })
 export class SideNavComponent implements OnInit {
 
-  contentIsOpen: boolean = true;
   menuIsOpen: boolean = false;
 
   menu: MenuItem;
@@ -19,10 +38,10 @@ export class SideNavComponent implements OnInit {
   constructor() {
 
     this.menuLinks = [
-      new MenuItem("../../../assets/menu.svg", "Menu", null),
-      new MenuItem("../../../assets/home.svg", "Home", ""),
-      new MenuItem("../../../assets/bars.svg", "Dashboard", "dashboard"),
-      new MenuItem("../../../assets/business.svg", "Pricing", "pricing"),
+      new MenuItem("assets/menu.svg", "Menu", null),
+      new MenuItem("assets/home.svg", "Home", ""),
+      new MenuItem("assets/bars.svg", "Dashboard", "dashboard"),
+      new MenuItem("assets/business.svg", "Pricing", "pricing"),
     ];
 
     this.menu = this.menuLinks[0];
@@ -32,7 +51,6 @@ export class SideNavComponent implements OnInit {
   }
 
   toggle() {
-    this.contentIsOpen = !this.contentIsOpen;
     this.menuIsOpen = !this.menuIsOpen;
   }
 
