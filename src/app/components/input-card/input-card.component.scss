@@ -1,12 +1,112 @@
 .card {
     background-color: white;
     padding: 20px;
-    border-radius: 5px;
+    box-sizing: border-box;
+    border-radius: 10px;
     width: 100%;
     height: 100%;
 }
 
 .card:hover {
-    background-color: #F7F4FF;
     color: #5843BE;
+    cursor: pointer;
+}
+
+.card:hover input, .card:hover label {
+    color: #5843BE;
+    background-color: transparent;
+}
+
+.card:hover ::placeholder {
+    color: #5843BE;
+}
+
+.card:hover .icon {
+    fill: #5843BE;
+}
+
+.center {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    height: 100%;
+}
+
+.icon {
+    margin-right: 20px;
+}
+
+label {
+    display: block;
+}
+
+.icon-column-right {
+    margin-left: auto;
+}
+
+// Error
+
+.error {
+    background-color: #FCDBCF;
+}
+
+.error input, .error label {
+    color: #D5380E !important;
+}
+
+.error .icon {
+    fill: #D5380E !important;
+}
+
+.error ::placeholder {
+    color: #D5380E !important;
+}
+
+.success {
+    background-color: #E6F7E8;
+}
+
+.success input, .success label {
+    color: #3AB84A !important;
+}
+
+.success .icon {
+    fill: #3AB84A !important;
+}
+
+.success ::placeholder {
+    color: #3AB84A !important;
+}
+
+// Input
+
+input {
+    outline: none;
+    border: none;
+    color: #bfbdc1;
+    width: 90%;
+    background-color: transparent;
+}
+
+::placeholder {
+    color: #bfbdc1;
+}
+
+input:hover {
+    cursor: pointer;
+}
+
+.input-switch {
+    width: 100%;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
 }

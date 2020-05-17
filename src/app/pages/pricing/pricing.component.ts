@@ -10,24 +10,24 @@ import { CardInput } from 'src/model/CardInput';
 })
 export class PricingComponent implements OnInit {
   dimentions: CardInput[] = [
-    new CardInput("text", "Total Surface", null),
-    new CardInput("text", "Covered Surface", null),
+    new CardInput("number", "Total Surface", null, "total_surface", "Insert total surface in square meters", "assets/icons/area.svg"),
+    new CardInput("number", "Covered Surface", null, "covered_surface", "Insert covered surface in square meters", "assets/icons/covered.svg"),
   ];
 
   equipment: CardInput[] = [
-    new CardInput("number", "Rooms", null),
-    new CardInput("number", "Garages", null),
-    new CardInput("number", "Bedrooms", null),
+    new CardInput("number", "Rooms", null, "rooms", "Insert number of rooms", "assets/icons/rooms.svg"),
+    new CardInput("number", "Garages", null, "garages", "Insert amount of garages", "assets/icons/garages.svg"),
+    new CardInput("number", "Bedrooms", null, "bedrooms", "Insert number of bedrooms", "assets/icons/bedrooms.svg"),
   ];
 
   bathroom: CardInput[] = [
-    new CardInput("number", "Bathrooms", null),
-    new CardInput("number", "Toilettes", null),
+    new CardInput("number", "Bathrooms", null, "bathrooms", "Insert number of bathrooms", "assets/icons/bathrooms.svg"),
+    new CardInput("number", "Toilettes", null, "toilettes", "Insert number of toilettes", "assets/icons/toilettes.svg"),
   ];
 
-  zone: CardInput = new CardInput("text", "Zone", null);
+  zone: CardInput = new CardInput("text", "Zone", null, "zone", "Select house zone", "assets/icons/zone.svg");
 
-  antiquity: CardInput = new CardInput("text", "Antiquity", null);
+  antiquity: CardInput = new CardInput("number", "Antiquity", null, "antiquity", "Specify house antiquity", "assets/icons/antiquity.svg");
 
   prediction: FormGroup;
 
@@ -42,16 +42,30 @@ export class PricingComponent implements OnInit {
       toilettes: [null, [Validators.required, Validators.min(0)]],
       antiquity: [null, [Validators.required, Validators.min(0)]],
       zone: ['', Validators.required]
-    })
+    });
+
+    this.setControls();
   }
 
   ngOnInit(): void {
   }
 
   predict() {
+    console.log(this.prediction.value);
     this.predictionService.predict(this.prediction.value).subscribe(response => {
       console.log(response);
     })
   }
 
+  setControls() {
+    this.dimentions.map(this.initializeControl.bind(this));
+    this.equipment.map(this.initializeControl.bind(this));
+    this.bathroom.map(this.initializeControl.bind(this));
+    this.initializeControl(this.zone);
+    this.initializeControl(this.antiquity);
+  }
+
+  initializeControl(input: CardInput) {
+    input.formControl = this.prediction.controls[input.controlName];
+  }
 }

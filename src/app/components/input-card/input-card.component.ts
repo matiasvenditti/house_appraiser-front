@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { CardInput } from 'src/model/CardInput';
 
 @Component({
@@ -9,11 +9,68 @@ import { CardInput } from 'src/model/CardInput';
 export class InputCardComponent implements OnInit {
 
   @Input()
-  input: CardInput
+  input: CardInput;
 
-  constructor() { }
+  @Input()
+  index: number;
+
+  @ViewChild('myInput') formInput;
+
+  fill: string = "assets/icons/fill.svg";
+  error: string = "assets/icons/error.svg";
+  success: string = "assets/icons/success.svg";
+
+  state: string = this.fill;
+
+  isError: boolean = false;
+  isSuccess: boolean = false;
+
+  constructor() {
+  }
 
   ngOnInit(): void {
+    this.input?.formControl.valueChanges.subscribe(change => {
+      console.log(change);
+      this.setState();
+    });
+  }
+
+  setSuccess() {
+    this.state = this.success;
+  }
+
+  setError() {
+    this.state = this.error;
+  }
+
+  setFill() {
+    this.state = this.fill;
+  }
+
+  focus() {
+    this.formInput.nativeElement.focus();
+  }
+
+  setState(): string {
+    if (this.input.formControl.invalid && this.input.formControl.touched) {
+      this.isError = true;
+      this.isSuccess = false;
+      this.setError();
+    }
+
+    else if (this.input.formControl.valid) {
+      this.isError = false;
+      this.isSuccess = true;
+      this.setSuccess();
+    }
+
+    else {
+      this.isError = false;
+      this.isSuccess = false;
+      this.setFill();
+    }
+
+    return this.state;
   }
 
 }
