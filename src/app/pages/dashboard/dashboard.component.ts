@@ -18,10 +18,11 @@ export class DashboardComponent implements OnInit {
   bathrooms: BathroomData;
   zones: ZoneData;
 
-  coveredConfig: ChartConfiguration = new ChartConfiguration("Covered Surface", "Curves");
-  totalConfig: ChartConfiguration = new ChartConfiguration("Total Surface", "Curves");
-  bathroomConfig: ChartConfiguration = new ChartConfiguration("Amount of Bathrooms", "Curves");
-  zoneConfig: ChartConfiguration = new ChartConfiguration("Zone Distribution", "Zones");
+  coveredConfig: ChartConfiguration = new ChartConfiguration("Covered Surface Pricing", "Curves", 500, 200);
+  totalConfig: ChartConfiguration = new ChartConfiguration("Total Surface Pricing", "Curves", 500, 200);
+  bathroomConfig: ChartConfiguration = new ChartConfiguration("Bathroom Pricing", "Curves", 1200, 200);
+  zoneConfig: ChartConfiguration = new ChartConfiguration("Zone Distribution", "Zones", 1200, 200);
+  expensiveConfig: ChartConfiguration = new ChartConfiguration("Average Price By Zone", "", 500, 200);
 
   constructor(private dashboardService: DashboardService) {
 

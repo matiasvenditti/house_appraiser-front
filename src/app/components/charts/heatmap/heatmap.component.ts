@@ -1,18 +1,13 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
-import * as shape from 'd3-shape';
-import { LineAreaConvertable } from 'src/model/line-area/LineAreaConvertable';
+import { Component, OnInit, Input } from '@angular/core';
+import {multi} from './data';
 import { ChartConfiguration } from 'src/model/line-area/ChartConfiguration';
 
 @Component({
-  selector: 'app-line-area',
-  templateUrl: './line-area.component.html',
-  styleUrls: ['./line-area.component.scss']
+  selector: 'app-heatmap',
+  templateUrl: './heatmap.component.html',
+  styleUrls: ['./heatmap.component.scss']
 })
-export class LineAreaComponent implements OnInit {
-
-  @Input()
-  items: LineAreaConvertable;
-
+export class HeatmapComponent implements OnInit {
   multi: any[];
 
   // options
@@ -23,37 +18,28 @@ export class LineAreaComponent implements OnInit {
   yAxis: boolean = true;
   showYAxisLabel: boolean = true;
   showXAxisLabel: boolean = true;
-  timeline: boolean = false;
-  view: any[] = [700, 300];
+  xAxisLabel: string = 'Country';
+  yAxisLabel: string = 'Year';
+  view: any[] = [600, 300];
+
   colorScheme = {
-    domain: ['#5843BE']
+    domain: ['#F6F5FC', '#5843BE']
   };
-
-  @Input()
-  xAxisLabel: string;
-
-  @Input()
-  yAxisLabel: string;
 
   @Input()
   config: ChartConfiguration;
 
-  curve = shape.curveCardinal;
-
   constructor() {
+    Object.assign(this, { multi });
   }
-
   ngOnInit(): void {
-    this.multi = [this.items.convert()];
-    console.log(this.config);
     this.view = [this.config.width, this.config.height];
-    console.log(this.view);
   }
 
   onSelect(data): void {
     console.log('Item clicked', JSON.parse(JSON.stringify(data)));
   }
-
+  
   onActivate(data): void {
     console.log('Activate', JSON.parse(JSON.stringify(data)));
   }
@@ -61,4 +47,5 @@ export class LineAreaComponent implements OnInit {
   onDeactivate(data): void {
     console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
+
 }

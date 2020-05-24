@@ -23,6 +23,7 @@ import { SummaryItemComponent } from './components/summary-item/summary-item.com
 import { SummaryPipe } from './pipes/summary.pipe';
 import { LandingComponent } from './pages/landing/landing.component';
 import { BarChartComponent } from './components/charts/bar-chart/bar-chart.component';
+import { HeatmapComponent } from './components/charts/heatmap/heatmap.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { BarChartComponent } from './components/charts/bar-chart/bar-chart.compo
     SummaryItemComponent,
     SummaryPipe,
     LandingComponent,
-    BarChartComponent
+    BarChartComponent,
+    HeatmapComponent
   ],
   imports: [
     BrowserModule,

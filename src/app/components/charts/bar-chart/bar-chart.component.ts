@@ -15,8 +15,6 @@ export class BarChartComponent implements OnInit {
   single: any[];
   multi: any[];
 
-  view: any[] = [700, 400];
-
   // options
   showXAxis = true;
   showYAxis = true;
@@ -24,6 +22,7 @@ export class BarChartComponent implements OnInit {
   showLegend = true;
   showXAxisLabel = true;
   showYAxisLabel = true;
+  view: any[] = [1500, 300];
 
   colorScheme = {
     domain: ['#5843BE']
@@ -39,9 +38,11 @@ export class BarChartComponent implements OnInit {
   config: ChartConfiguration;
 
   constructor() {}
-  
+
   ngOnInit(): void {
     this.single = this.items.convert().series;
+    console.log(this.config);
+    this.view = [this.config.width, this.config.height];
   }
 
   onSelect(event) {

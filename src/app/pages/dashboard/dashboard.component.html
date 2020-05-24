@@ -1,8 +1,57 @@
 <div class="background">
     <h1 class="title">Dashboard</h1>
 
-    <app-line-area *ngIf="coveredSurface" [config]="coveredConfig" [items]="coveredSurface" [xAxisLabel]="'Covered Surface'" [yAxisLabel]="'Price'"></app-line-area>
-    <app-line-area *ngIf="totalSurface" [config]="totalConfig" [items]="totalSurface" [xAxisLabel]="'Total Surface'" [yAxisLabel]="'Price'"></app-line-area>
-    <app-line-area *ngIf="bathrooms" [config]="bathroomConfig" [items]="bathrooms" [xAxisLabel]="'Bathrooms'" [yAxisLabel]="'Price'"></app-line-area>
-    <app-bar-chart *ngIf="zones" [config]="zoneConfig" [items]="zones" [xAxisLabel]="'Zone'" [yAxisLabel]="'Houses'"></app-bar-chart>
+    <!-- <mat-grid-list cols="6">
+        <mat-grid-tile colspan="4" rowspan="2">
+            1
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="2" rowspan="3">
+            2
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="4" rowspan="2">
+            3
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="2" rowspan="3">
+            4
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="2" rowspan="2">
+            <app-heatmap [config]="expensiveConfig"></app-heatmap>    
+        </mat-grid-tile>
+        
+        <mat-grid-tile colspan="2" rowspan="2">
+            <app-heatmap [config]="expensiveConfig"></app-heatmap>    
+        </mat-grid-tile>
+
+    </mat-grid-list> -->
+
+
+    <mat-grid-list cols="2" rowHeight="400px" [gutterSize]="'40px'">
+        <mat-grid-tile colspan="1">
+            <app-line-area *ngIf="coveredSurface" [config]="coveredConfig" [items]="coveredSurface" [xAxisLabel]="'Surface'" [yAxisLabel]="'Price'"></app-line-area>    
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="1">
+            <app-line-area *ngIf="totalSurface" [config]="totalConfig" [items]="totalSurface" [xAxisLabel]="'Surface'" [yAxisLabel]="'Price'"></app-line-area>    
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="2">
+            <app-line-area *ngIf="bathrooms" [config]="bathroomConfig" [items]="bathrooms" [xAxisLabel]="'Bathrooms'" [yAxisLabel]="'Price'"></app-line-area>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="2">
+            <app-bar-chart *ngIf="zones" [config]="zoneConfig" [items]="zones" [xAxisLabel]="'Zone'" [yAxisLabel]="'Houses'"></app-bar-chart>
+        </mat-grid-tile>      
+
+        <mat-grid-tile colspan="1">
+                <app-heatmap [config]="expensiveConfig"></app-heatmap>    
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="1">
+            <app-heatmap [config]="expensiveConfig"></app-heatmap>    
+        </mat-grid-tile>
+    </mat-grid-list>
 </div>

@@ -1,20 +1,20 @@
 <div class="card">
     <h2>{{config.title}}</h2>
 
-    <ngx-charts-bar-vertical
+    <ngx-charts-heat-map
         [scheme]="colorScheme"
-        [results]="single"
-        [gradient]="gradient"
-        [xAxis]="showXAxis"
-        [yAxis]="showYAxis"
-        [legend]="showLegend"
-        [legendTitle]="config.legend"
+        [legend]="legend"
         [showXAxisLabel]="showXAxisLabel"
         [showYAxisLabel]="showYAxisLabel"
+        [xAxis]="xAxis"
+        [yAxis]="yAxis"
         [xAxisLabel]="xAxisLabel"
         [yAxisLabel]="yAxisLabel"
+        [results]="multi"
         (select)="onSelect($event)"
+        (activate)="onActivate($event)"
+        (deactivate)="onDeactivate($event)"
         [view]="view"
         >
-    </ngx-charts-bar-vertical>
+    </ngx-charts-heat-map>
 </div>
