@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import * as shape from 'd3-shape';
 import { LineAreaConvertable } from 'src/model/line-area/LineAreaConvertable';
-import { LineConfiguration } from 'src/model/line-area/LineConfiguration';
+import { ChartConfiguration } from 'src/model/line-area/ChartConfiguration';
 
 @Component({
   selector: 'app-line-area',
@@ -26,7 +26,7 @@ export class LineAreaComponent implements OnInit {
   showXAxisLabel: boolean = true;
   timeline: boolean = false;
   colorScheme = {
-    domain: ['#5843BE', '#f94144']
+    domain: ['#5843BE']
   };
 
   @Input()
@@ -36,7 +36,7 @@ export class LineAreaComponent implements OnInit {
   yAxisLabel: string;
 
   @Input()
-  config: LineConfiguration;
+  config: ChartConfiguration;
 
   curve = shape.curveCardinal;
 

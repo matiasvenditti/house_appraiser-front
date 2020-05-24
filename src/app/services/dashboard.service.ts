@@ -82,4 +82,11 @@ export class DashboardService {
     })
   }
 
+  getHousesByZone() {
+    let params = new HttpParams();
+    params.append("group", "zone");
+    
+    return this.http.get(`${environment.baseUrl}/houses`)
+  }
+
 }

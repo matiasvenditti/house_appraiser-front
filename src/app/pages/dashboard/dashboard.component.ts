@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DashboardService } from 'src/app/services/dashboard.service';
 import { CoveredSurfaceData } from 'src/model/line-area/covered/CoveredSurfaceData';
 import { TotalSurfaceData } from 'src/model/line-area/total/TotalSurfaceData';
-import { LineConfiguration } from 'src/model/line-area/LineConfiguration';
+import { ChartConfiguration } from 'src/model/line-area/ChartConfiguration';
 import { BathroomData } from 'src/model/line-area/bathroom/BathroomData';
 
 @Component({
@@ -16,9 +16,10 @@ export class DashboardComponent implements OnInit {
   totalSurface: TotalSurfaceData;
   bathrooms: BathroomData;
 
-  coveredConfig: LineConfiguration = new LineConfiguration("Covered Surface", "Curves");
-  totalConfig: LineConfiguration = new LineConfiguration("Total Surface", "Curves");
-  bathroomConfig: LineConfiguration = new LineConfiguration("Amount of Bathrooms", "Curves");
+  coveredConfig: ChartConfiguration = new ChartConfiguration("Covered Surface", "Curves");
+  totalConfig: ChartConfiguration = new ChartConfiguration("Total Surface", "Curves");
+  bathroomConfig: ChartConfiguration = new ChartConfiguration("Amount of Bathrooms", "Curves");
+  zoneConfig: ChartConfiguration = new ChartConfiguration("Zone Distribution", "Zones");
 
   constructor(private dashboardService: DashboardService) {
 
@@ -32,6 +33,7 @@ export class DashboardComponent implements OnInit {
       this.totalSurface = new TotalSurfaceData(data);
     });
 
+    // [DISABLE MOCK]
     this.dashboardService.getBathroomPricesMock().subscribe(data => {
       this.bathrooms = new BathroomData(data);
     })

@@ -22,6 +22,7 @@ import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { SummaryItemComponent } from './components/summary-item/summary-item.component';
 import { SummaryPipe } from './pipes/summary.pipe';
 import { LandingComponent } from './pages/landing/landing.component';
+import { BarChartComponent } from './components/charts/bar-chart/bar-chart.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { LandingComponent } from './pages/landing/landing.component';
     SideNavComponent,
     SummaryItemComponent,
     SummaryPipe,
-    LandingComponent
+    LandingComponent,
+    BarChartComponent
   ],
   imports: [
     BrowserModule,
