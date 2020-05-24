@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import * as shape from 'd3-shape';
 import { LineAreaConvertable } from 'src/model/line-area/LineAreaConvertable';
+import { LineConfiguration } from 'src/model/line-area/LineConfiguration';
 
 @Component({
   selector: 'app-line-area',
@@ -33,6 +34,9 @@ export class LineAreaComponent implements OnInit {
 
   @Input()
   yAxisLabel: string;
+
+  @Input()
+  config: LineConfiguration;
 
   curve = shape.curveCardinal;
 

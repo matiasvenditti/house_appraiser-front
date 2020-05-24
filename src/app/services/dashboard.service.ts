@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { CoveredSurfaceItem } from 'src/model/line-area/covered/CoveredSurfaceItem';
 import { TotalSurfaceItem } from 'src/model/line-area/total/TotalSurfaceItem';
 import { Observable } from 'rxjs';
+import { BathroomItem } from 'src/model/line-area/bathroom/BathroomItem';
 
 @Injectable({
   providedIn: 'root'
@@ -60,6 +61,25 @@ export class DashboardService {
         ]
       );
     });
+  }
+
+  getBathroomPrices(): Observable<BathroomItem[]> {
+    let params = new HttpParams();
+    params.append("group", "bathroom");
+
+    return this.http.get<BathroomItem[]>(`${environment.baseUrl}/prices`, {params});
+  }
+
+  getBathroomPricesMock(): Observable<BathroomItem[]> {
+    return new Observable((observer) => {
+      observer.next([
+        new BathroomItem(1, 150000),
+        new BathroomItem(2, 300000),
+        new BathroomItem(3, 315000),
+        new BathroomItem(4, 325000),
+        new BathroomItem(5, 350000),
+      ])
+    })
   }
 
 }

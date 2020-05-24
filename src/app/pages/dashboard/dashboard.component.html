@@ -1,6 +1,7 @@
 <div class="background">
     <h1 class="title">Dashboard</h1>
 
-    <app-line-area *ngIf="coveredSurface" [items]="coveredSurface" [xAxisLabel]="'Covered Surface'" [yAxisLabel]="'Price'"></app-line-area>
-    <app-line-area *ngIf="totalSurface" [items]="totalSurface" [xAxisLabel]="'Total Surface'" [yAxisLabel]="'Price'"></app-line-area>
+    <app-line-area *ngIf="coveredSurface" [config]="coveredConfig" [items]="coveredSurface" [xAxisLabel]="'Covered Surface'" [yAxisLabel]="'Price'"></app-line-area>
+    <app-line-area *ngIf="totalSurface" [config]="totalConfig" [items]="totalSurface" [xAxisLabel]="'Total Surface'" [yAxisLabel]="'Price'"></app-line-area>
+    <app-line-area *ngIf="bathrooms" [config]="bathroomConfig" [items]="bathrooms" [xAxisLabel]="'Bathrooms'" [yAxisLabel]="'Price'"></app-line-area>
 </div>
