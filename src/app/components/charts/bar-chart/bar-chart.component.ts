@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { single } from './data';
 import { ChartConfiguration } from 'src/model/line-area/ChartConfiguration';
+import { BarChartConvertable } from 'src/model/bar-chart/BarChartConvertable';
 
 @Component({
   selector: 'app-bar-chart',
@@ -8,6 +8,9 @@ import { ChartConfiguration } from 'src/model/line-area/ChartConfiguration';
   styleUrls: ['./bar-chart.component.scss']
 })
 export class BarChartComponent implements OnInit {
+
+  @Input()
+  items: BarChartConvertable;
 
   single: any[];
   multi: any[];
@@ -35,10 +38,11 @@ export class BarChartComponent implements OnInit {
   @Input()
   config: ChartConfiguration;
 
-  constructor() {
-    Object.assign(this, { single })
+  constructor() {}
+  
+  ngOnInit(): void {
+    this.single = this.items.convert().series;
   }
-  ngOnInit(): void {}
 
   onSelect(event) {
     console.log(event);

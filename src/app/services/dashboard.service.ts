@@ -5,6 +5,7 @@ import { CoveredSurfaceItem } from 'src/model/line-area/covered/CoveredSurfaceIt
 import { TotalSurfaceItem } from 'src/model/line-area/total/TotalSurfaceItem';
 import { Observable } from 'rxjs';
 import { BathroomItem } from 'src/model/line-area/bathroom/BathroomItem';
+import { ZoneItem } from 'src/model/bar-chart/zone/ZoneItem';
 
 @Injectable({
   providedIn: 'root'
@@ -50,14 +51,14 @@ export class DashboardService {
     return new Observable((observer) => {
       observer.next(
         [
-          new TotalSurfaceItem(300, 200000),
-          new TotalSurfaceItem(350, 225000),
+          new TotalSurfaceItem(300, 100000),
+          new TotalSurfaceItem(350, 125000),
           new TotalSurfaceItem(400, 300000),
           new TotalSurfaceItem(450, 320000),
           new TotalSurfaceItem(500, 410000),
-          new TotalSurfaceItem(550, 450000),
-          new TotalSurfaceItem(600, 470000),
-          new TotalSurfaceItem(650, 500000)
+          new TotalSurfaceItem(550, 550000),
+          new TotalSurfaceItem(600, 570000),
+          new TotalSurfaceItem(650, 600000)
         ]
       );
     });
@@ -82,11 +83,24 @@ export class DashboardService {
     })
   }
 
-  getHousesByZone() {
+  getHousesByZone(): Observable<ZoneItem[]> {
     let params = new HttpParams();
     params.append("group", "zone");
-    
-    return this.http.get(`${environment.baseUrl}/houses`)
+
+    return this.http.get<ZoneItem[]>(`${environment.baseUrl}/houses`)
+  }
+
+  getHousesByZoneMock(): Observable<ZoneItem[]> {
+    return new Observable((observer) => {
+      observer.next([
+        new ZoneItem("Pilar", 65),
+        new ZoneItem("Escobar", 80),
+        new ZoneItem("San Isidro", 47),
+        new ZoneItem("Palermo", 49),
+        new ZoneItem("Belgrano", 43),
+        new ZoneItem("Recoleta", 30)
+      ])
+    })
   }
 
 }

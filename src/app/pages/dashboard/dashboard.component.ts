@@ -4,6 +4,7 @@ import { CoveredSurfaceData } from 'src/model/line-area/covered/CoveredSurfaceDa
 import { TotalSurfaceData } from 'src/model/line-area/total/TotalSurfaceData';
 import { ChartConfiguration } from 'src/model/line-area/ChartConfiguration';
 import { BathroomData } from 'src/model/line-area/bathroom/BathroomData';
+import { ZoneData } from 'src/model/bar-chart/zone/ZoneData';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,6 +16,7 @@ export class DashboardComponent implements OnInit {
   coveredSurface: CoveredSurfaceData;
   totalSurface: TotalSurfaceData;
   bathrooms: BathroomData;
+  zones: ZoneData;
 
   coveredConfig: ChartConfiguration = new ChartConfiguration("Covered Surface", "Curves");
   totalConfig: ChartConfiguration = new ChartConfiguration("Total Surface", "Curves");
@@ -36,6 +38,11 @@ export class DashboardComponent implements OnInit {
     // [DISABLE MOCK]
     this.dashboardService.getBathroomPricesMock().subscribe(data => {
       this.bathrooms = new BathroomData(data);
+    });
+
+    // [DISABLE MOCK]
+    this.dashboardService.getHousesByZoneMock().subscribe(data => {
+      this.zones = new ZoneData(data);
     })
     
   }
