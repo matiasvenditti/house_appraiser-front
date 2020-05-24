@@ -21,6 +21,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { SummaryItemComponent } from './components/summary-item/summary-item.component';
 import { SummaryPipe } from './pipes/summary.pipe';
+import { LandingComponent } from './pages/landing/landing.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { SummaryPipe } from './pipes/summary.pipe';
     InputCardComponent,
     SideNavComponent,
     SummaryItemComponent,
-    SummaryPipe
+    SummaryPipe,
+    LandingComponent
   ],
   imports: [
     BrowserModule,

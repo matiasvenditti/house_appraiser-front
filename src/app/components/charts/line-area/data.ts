@@ -1,69 +1,55 @@
 export var multi = [
     {
-      "name": "Germany",
+      "name": "Covered Surface",
       "series": [
         {
-          "name": "1990",
+          "name": "100",
           "value": 62000000
         },
         {
-          "name": "2010",
+          "name": "150",
           "value": 73000000
         },
         {
-          "name": "2011",
+          "name": "200",
           "value": 89400000
-        }
+        },
+        {
+          "name": "250",
+          "value": 73000000
+        },
+        {
+          "name": "300",
+          "value": 58000000
+        },
+        {
+          "name": "350",
+          "value": 73000000
+        },
+        {
+          "name": "400",
+          "value": 89400000
+        },
+        
       ]
     },
   
     {
-      "name": "USA",
+      "name": "Total Surface",
       "series": [
         {
-          "name": "1990",
+          "name": "100",
           "value": 250000000
         },
         {
-          "name": "2010",
+          "name": "150",
           "value": 309000000
         },
         {
-          "name": "2011",
+          "name": "200",
           "value": 311000000
         }
       ]
     },
-  
-    {
-      "name": "France",
-      "series": [
-        {
-          "name": "1990",
-          "value": 58000000
-        },
-        {
-          "name": "2010",
-          "value": 50000020
-        },
-        {
-          "name": "2011",
-          "value": 58000000
-        }
-      ]
-    },
-    {
-      "name": "UK",
-      "series": [
-        {
-          "name": "1990",
-          "value": 57000000
-        },
-        {
-          "name": "2010",
-          "value": 62000000
-        }
-      ]
-    }
   ];
   

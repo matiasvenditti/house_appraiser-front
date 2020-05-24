@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { multi } from './data';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import * as shape from 'd3-shape';
+import { LineAreaConvertable } from 'src/model/line-area/LineAreaConvertable';
 
 @Component({
   selector: 'app-line-area',
@@ -7,6 +8,9 @@ import { multi } from './data';
   styleUrls: ['./line-area.component.scss']
 })
 export class LineAreaComponent implements OnInit {
+
+  @Input()
+  items: LineAreaConvertable;
 
   multi: any[];
   view: any[] = [700, 300];
@@ -19,18 +23,25 @@ export class LineAreaComponent implements OnInit {
   yAxis: boolean = true;
   showYAxisLabel: boolean = true;
   showXAxisLabel: boolean = true;
-  xAxisLabel: string = 'Year';
-  yAxisLabel: string = 'Population';
-  timeline: boolean = true;
-
+  timeline: boolean = false;
   colorScheme = {
-    domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
+    domain: ['#5843BE', '#f94144']
   };
 
+  @Input()
+  xAxisLabel: string;
+
+  @Input()
+  yAxisLabel: string;
+
+  curve = shape.curveCardinal;
+
   constructor() {
-    Object.assign(this, { multi });
   }
+
   ngOnInit(): void {
+    console.log(this.items);
+    this.multi = [this.items.convert()];
   }
 
   onSelect(data): void {
