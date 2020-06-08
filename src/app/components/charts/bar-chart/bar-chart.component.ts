@@ -18,8 +18,7 @@ export class BarChartComponent implements OnInit {
   // options
   showXAxis = true;
   showYAxis = true;
-  gradient = false;
-  showLegend = true;
+  gradient = false; 
   showXAxisLabel = true;
   showYAxisLabel = true;
   view: any[] = [1500, 300];
@@ -36,6 +35,9 @@ export class BarChartComponent implements OnInit {
 
   @Input()
   config: ChartConfiguration;
+
+  @Input()
+  legend: boolean = true;
 
   constructor() {}
 

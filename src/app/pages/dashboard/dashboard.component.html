@@ -39,7 +39,7 @@
         </mat-grid-tile>
 
         <mat-grid-tile colspan="2">
-            <app-line-area *ngIf="bathrooms" [config]="bathroomConfig" [items]="bathrooms" [xAxisLabel]="'Bathrooms'" [yAxisLabel]="'Price'"></app-line-area>
+            <app-bar-chart *ngIf="bathrooms" [config]="bathroomConfig" [items]="bathrooms" [xAxisLabel]="'Bathrooms'" [yAxisLabel]="'Price'"></app-bar-chart>
         </mat-grid-tile>
 
         <mat-grid-tile colspan="2">
@@ -52,6 +52,14 @@
 
         <mat-grid-tile colspan="1">
             <app-heatmap [config]="expensiveConfig"></app-heatmap>    
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="1">
+            <app-bar-chart *ngIf="expensiveAverage" [config]="expensiveAverageConfig" [items]="expensiveAverage" [xAxisLabel]="'Zone'" [yAxisLabel]="'Average Price'" [legend]="false"></app-bar-chart>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="1">
+            <app-bar-chart *ngIf="afforadableAverage" [config]="affordableAverageConfig" [items]="afforadableAverage" [xAxisLabel]="'Zone'" [yAxisLabel]="'Average Price'" [legend]="false"></app-bar-chart>
         </mat-grid-tile>
     </mat-grid-list>
 </div>

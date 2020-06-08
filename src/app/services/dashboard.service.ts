@@ -6,6 +6,7 @@ import { TotalSurfaceItem } from 'src/model/line-area/total/TotalSurfaceItem';
 import { Observable } from 'rxjs';
 import { BathroomItem } from 'src/model/line-area/bathroom/BathroomItem';
 import { ZoneItem } from 'src/model/bar-chart/zone/ZoneItem';
+import { AveragePriceItem } from 'src/model/bar-chart/average-price/AveragePriceItem';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +16,7 @@ export class DashboardService {
   constructor(private http: HttpClient) { }
 
   getCoveredSurface() {
-    let params = new HttpParams();
-    params.append("range", "1000");
-    params.append("surface", "covered");
+    let params = new HttpParams().append("surface", "covered");
 
     return this.http.get<CoveredSurfaceItem[]>(`${environment.baseUrl}/prices`, {params})
   }
@@ -40,9 +39,7 @@ export class DashboardService {
   }
 
   getTotalSurface(): Observable<TotalSurfaceItem[]> {
-    let params = new HttpParams();
-    params.append("range", "1000");
-    params.append("surface", "total");
+    let params = new HttpParams().append("surface", "total");
 
     return this.http.get<TotalSurfaceItem[]>(`${environment.baseUrl}/prices`, {params})
   }
@@ -65,10 +62,7 @@ export class DashboardService {
   }
 
   getBathroomPrices(): Observable<BathroomItem[]> {
-    let params = new HttpParams();
-    params.append("group", "bathroom");
-
-    return this.http.get<BathroomItem[]>(`${environment.baseUrl}/prices`, {params});
+    return this.http.get<BathroomItem[]>(`${environment.baseUrl}/prices/by-bathrooms`);
   }
 
   getBathroomPricesMock(): Observable<BathroomItem[]> {
@@ -101,6 +95,14 @@ export class DashboardService {
         new ZoneItem("Recoleta", 30)
       ])
     })
+  }
+
+  getAveragePriceByZone(range: string, top: number) {
+    let params = new HttpParams();
+    params = params.append("range", range);
+    params = params.append("top", top.toString());
+
+    return this.http.get<AveragePriceItem[]>(`${environment.baseUrl}/prices/by-zone`, {params})
   }
 
 }
