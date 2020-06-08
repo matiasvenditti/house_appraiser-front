@@ -1,6 +1,6 @@
 export var multi = [
     {
-      "name": "Germany",
+      "name": "Recoleta",
       "series": [
         {
           "name": "1990",
@@ -18,7 +18,7 @@ export var multi = [
     },
   
     {
-      "name": "USA",
+      "name": "Nordelta",
       "series": [
         {
           "name": "1990",
@@ -36,7 +36,7 @@ export var multi = [
     },
   
     {
-      "name": "France",
+      "name": "San Isidro",
       "series": [
         {
           "name": "1990",
@@ -53,7 +53,7 @@ export var multi = [
       ]
     },
     {
-      "name": "UK",
+      "name": "Palermo",
       "series": [
         {
           "name": "1990",
@@ -62,6 +62,10 @@ export var multi = [
         {
           "name": "2010",
           "value": 62000000
+        },
+        {
+          "name": "2011",
+          "value": 72000000
         }
       ]
     }
