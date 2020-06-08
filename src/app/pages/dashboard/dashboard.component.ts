@@ -7,6 +7,7 @@ import { BathroomData } from 'src/model/line-area/bathroom/BathroomData';
 import { ZoneData } from 'src/model/bar-chart/zone/ZoneData';
 import { AveragePriceData } from 'src/model/bar-chart/average-price/AveragePriceData';
 import {CoveredSurfaceItem} from "../../../model/line-area/covered/CoveredSurfaceItem";
+import {TotalSurfaceItem} from "../../../model/line-area/total/TotalSurfaceItem";
 
 @Component({
   selector: 'app-dashboard',
@@ -34,32 +35,11 @@ export class DashboardComponent implements OnInit {
   constructor(private dashboardService: DashboardService) {
 
     this.dashboardService.getCoveredSurface().subscribe(data => {
-
-      data.map(item => {
-        item.covered_surface <= 250 ? item.covered_surface = 250 :
-        item.covered_surface <= 500 ? item.covered_surface = 500 :
-        item.covered_surface <= 750 ? item.covered_surface = 750 :
-        item.covered_surface <= 1000 ? item.covered_surface = 1000 :
-        item.covered_surface <= 1250 ? item.covered_surface = 1250 :
-        item.covered_surface = 1500
-      });
-
-      let group = data.reduce((r, a) => {
-        r[a.covered_surface] = [...r[a.covered_surface] || [], a];
-        return r;
-      }, {});
-
-      Object
-        .keys(group)
-        .forEach(key => group[key] = { covered_surface: `[${Number.parseInt(key) - 250}, ${key}]`, average_price: getAveragePrice(group[key]) })
-
-      data = Object.values(group);
-      console.log(data);
-      this.coveredSurface = new CoveredSurfaceData(data);
+      this.coveredSurface = new CoveredSurfaceData(this.parseCovered(data));
     });
 
     this.dashboardService.getTotalSurface().subscribe(data => {
-      this.totalSurface = new TotalSurfaceData(data);
+      this.totalSurface = new TotalSurfaceData(this.parseTotal(data));
     });
 
     this.dashboardService.getBathroomPrices().subscribe(data => {
@@ -78,15 +58,58 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.getAveragePriceByZone("desc", 5).subscribe(data => {
       this.afforadableAverage = new AveragePriceData(data);
     });
-
-    const getAveragePrice = (items: CoveredSurfaceItem[]) => {
-      let sum = 0;
-      items.forEach(item => sum += item.average_price);
-      return Math.ceil(sum / items.length);
-    }
   }
 
   ngOnInit(): void {
   }
 
+  parseCovered(data): CoveredSurfaceItem[] {
+    data.map(item => {
+      item.covered_surface <= 250 ? item.covered_surface = 250 :
+      item.covered_surface <= 500 ? item.covered_surface = 500 :
+      item.covered_surface <= 750 ? item.covered_surface = 750 :
+      item.covered_surface <= 1000 ? item.covered_surface = 1000 :
+      item.covered_surface <= 1250 ? item.covered_surface = 1250 :
+      item.covered_surface = 1500
+    });
+
+    let group = data.reduce((r, a) => {
+      r[a.covered_surface] = [...r[a.covered_surface] || [], a];
+      return r;
+    }, {});
+
+    Object
+      .keys(group)
+      .forEach(key => group[key] = { covered_surface: `[${Number.parseInt(key) - 250}, ${key}]`, average_price: this.getAveragePrice(group[key]) })
+
+    return Object.values(group);
+  }
+
+  parseTotal(data): TotalSurfaceItem[] {
+    data.map(item => {
+      item.total_surface <= 250 ? item.total_surface = 250 :
+      item.total_surface <= 500 ? item.total_surface = 500 :
+      item.total_surface <= 750 ? item.total_surface = 750 :
+      item.total_surface <= 1000 ? item.total_surface = 1000 :
+      item.total_surface <= 1250 ? item.total_surface = 1250 :
+      item.total_surface = 1500
+    });
+
+    let group = data.reduce((r, a) => {
+      r[a.total_surface] = [...r[a.total_surface] || [], a];
+      return r;
+    }, {});
+
+    Object
+      .keys(group)
+      .forEach(key => group[key] = { total_surface: `[${Number.parseInt(key) - 250}, ${key}]`, average_price: this.getAveragePrice(group[key]) })
+
+    return Object.values(group);
+  }
+
+  getAveragePrice(items: CoveredSurfaceItem[]) {
+    let sum = 0;
+    items.forEach(item => sum += item.average_price);
+    return Math.ceil(sum / items.length);
+  }
 }
