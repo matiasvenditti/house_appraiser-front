@@ -31,15 +31,15 @@
 
     <mat-grid-list cols="2" rowHeight="400px" [gutterSize]="'40px'">
         <mat-grid-tile colspan="1">
-            <app-line-area *ngIf="coveredSurface" [config]="coveredConfig" [items]="coveredSurface" [xAxisLabel]="'Surface'" [yAxisLabel]="'Price'"></app-line-area>    
+            <app-line-area *ngIf="coveredSurface" [config]="coveredConfig" [items]="coveredSurface" [xAxisLabel]="'Surface [m2]'" [yAxisLabel]="'Price [USD]'"></app-line-area>    
         </mat-grid-tile>
 
         <mat-grid-tile colspan="1">
-            <app-line-area *ngIf="totalSurface" [config]="totalConfig" [items]="totalSurface" [xAxisLabel]="'Surface'" [yAxisLabel]="'Price'"></app-line-area>    
+            <app-line-area *ngIf="totalSurface" [config]="totalConfig" [items]="totalSurface" [xAxisLabel]="'Surface [m2]'" [yAxisLabel]="'Price [USD]'"></app-line-area>    
         </mat-grid-tile>
 
         <mat-grid-tile colspan="2">
-            <app-bar-chart *ngIf="bathrooms" [config]="bathroomConfig" [items]="bathrooms" [xAxisLabel]="'Bathrooms'" [yAxisLabel]="'Price'"></app-bar-chart>
+            <app-bar-chart *ngIf="bathrooms" [config]="bathroomConfig" [items]="bathrooms" [xAxisLabel]="'Bathrooms'" [yAxisLabel]="'Price [USD]'"></app-bar-chart>
         </mat-grid-tile>
 
         <mat-grid-tile colspan="2">
@@ -55,11 +55,11 @@
         </mat-grid-tile>
 
         <mat-grid-tile colspan="1">
-            <app-bar-chart *ngIf="expensiveAverage" [config]="expensiveAverageConfig" [items]="expensiveAverage" [xAxisLabel]="'Zone'" [yAxisLabel]="'Average Price'" [legend]="false"></app-bar-chart>
+            <app-bar-chart *ngIf="expensiveAverage" [config]="expensiveAverageConfig" [items]="expensiveAverage" [xAxisLabel]="'Zone'" [yAxisLabel]="'Average Price [USD]'" [legend]="false"></app-bar-chart>
         </mat-grid-tile>
 
         <mat-grid-tile colspan="1">
-            <app-bar-chart *ngIf="afforadableAverage" [config]="affordableAverageConfig" [items]="afforadableAverage" [xAxisLabel]="'Zone'" [yAxisLabel]="'Average Price'" [legend]="false"></app-bar-chart>
+            <app-bar-chart *ngIf="afforadableAverage" [config]="affordableAverageConfig" [items]="afforadableAverage" [xAxisLabel]="'Zone'" [yAxisLabel]="'Average Price [USD]'" [legend]="false"></app-bar-chart>
         </mat-grid-tile>
     </mat-grid-list>
 </div>

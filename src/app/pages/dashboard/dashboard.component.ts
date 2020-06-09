@@ -80,7 +80,7 @@ export class DashboardComponent implements OnInit {
 
     Object
       .keys(group)
-      .forEach(key => group[key] = { covered_surface: `[${Number.parseInt(key) - 250}, ${key}]`, average_price: this.getAveragePrice(group[key]) })
+      .forEach(key => group[key] = { covered_surface: key, average_price: this.getAveragePrice(group[key]) })
 
     return Object.values(group);
   }
@@ -102,7 +102,7 @@ export class DashboardComponent implements OnInit {
 
     Object
       .keys(group)
-      .forEach(key => group[key] = { total_surface: `[${Number.parseInt(key) - 250}, ${key}]`, average_price: this.getAveragePrice(group[key]) })
+      .forEach(key => group[key] = { total_surface: key, average_price: this.getAveragePrice(group[key]) })
 
     return Object.values(group);
   }

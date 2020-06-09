@@ -56,7 +56,7 @@ export class DashboardService {
     params = params.append("range", range);
     params = params.append("top", top.toString());
 
-    return this.http.get<AveragePriceItem[]>(`${environment.baseUrl}/prices/by-zone`, {params})
+    return this.http.get<AveragePriceItem[]>(`${environment.baseUrl}/prices/by-zone/average`, {params})
   }
 
 }
