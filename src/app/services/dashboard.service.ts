@@ -31,18 +31,6 @@ export class DashboardService {
     return this.http.get<BathroomItem[]>(`${environment.baseUrl}/prices/by-bathrooms`);
   }
 
-  getBathroomPricesMock(): Observable<BathroomItem[]> {
-    return new Observable((observer) => {
-      observer.next([
-        new BathroomItem(1, 150000),
-        new BathroomItem(2, 300000),
-        new BathroomItem(3, 315000),
-        new BathroomItem(4, 325000),
-        new BathroomItem(5, 350000),
-      ])
-    })
-  }
-
   getHousesByZone(): Observable<ZoneItem[]> {
     let params = new HttpParams();
     params.append("group", "zone");
@@ -50,25 +38,16 @@ export class DashboardService {
     return this.http.get<ZoneItem[]>(`${environment.baseUrl}/houses`)
   }
 
-  getHousesByZoneMock(): Observable<ZoneItem[]> {
-    return new Observable((observer) => {
-      observer.next([
-        new ZoneItem("Pilar", 65),
-        new ZoneItem("Escobar", 80),
-        new ZoneItem("San Isidro", 47),
-        new ZoneItem("Palermo", 49),
-        new ZoneItem("Belgrano", 43),
-        new ZoneItem("Recoleta", 30)
-      ])
-    })
-  }
-
   getAveragePriceByZone(range: string, top: number) {
     let params = new HttpParams();
     params = params.append("range", range);
     params = params.append("top", top.toString());
 
-    return this.http.get<AveragePriceItem[]>(`${environment.baseUrl}/prices/by-zone`, {params})
+    return this.http.get<AveragePriceItem[]>(`${environment.baseUrl}/prices/by-zone/average`, {params})
+  }
+
+  getPricesByZone() {
+    return this.http.get(`${environment.baseUrl}/prices/by-zone`);
   }
 
 }

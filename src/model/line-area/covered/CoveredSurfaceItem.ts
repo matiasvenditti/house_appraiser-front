@@ -1,3 +1,3 @@
 export class CoveredSurfaceItem {
-    constructor(public covered_surface: string, public average_price: number) {}
+    constructor(public covered_surface: number, public average_price: number) {}
 }

@@ -43,12 +43,10 @@ export class BarChartComponent implements OnInit {
 
   ngOnInit(): void {
     this.single = this.items.convert().series;
-    console.log(this.config);
     this.view = [this.config.width, this.config.height];
   }
 
   onSelect(event) {
-    console.log(event);
   }
 
 }
