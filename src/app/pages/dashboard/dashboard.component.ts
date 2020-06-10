@@ -8,6 +8,7 @@ import { ZoneData } from 'src/model/bar-chart/zone/ZoneData';
 import { AveragePriceData } from 'src/model/bar-chart/average-price/AveragePriceData';
 import {CoveredSurfaceItem} from "../../../model/line-area/covered/CoveredSurfaceItem";
 import {TotalSurfaceItem} from "../../../model/line-area/total/TotalSurfaceItem";
+import { HeatmapData } from 'src/model/heatmap/HeatmapData';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,7 +21,7 @@ export class DashboardComponent implements OnInit {
   totalSurface: TotalSurfaceData;
   bathrooms: BathroomData;
   zones: ZoneData;
-
+  heatmapData: HeatmapData;
   expensiveAverage: AveragePriceData;
   afforadableAverage: AveragePriceData;
 
@@ -49,6 +50,10 @@ export class DashboardComponent implements OnInit {
 
     this.dashboardService.getHousesByZone().subscribe(data => {
       this.zones = new ZoneData(data.slice(0, 5));
+    });
+
+    this.dashboardService.getPricesByZone().subscribe(data => {
+      this.heatmapData = new HeatmapData(data);
     });
 
     this.dashboardService.getAveragePriceByZone("asc", 5).subscribe(data => {

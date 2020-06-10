@@ -47,11 +47,11 @@
         </mat-grid-tile>      
 
         <mat-grid-tile colspan="1">
-                <app-heatmap [config]="expensiveConfig"></app-heatmap>    
+                <app-heatmap *ngIf="heatmapData" [config]="expensiveConfig" [items]="heatmapData" [ascending]="true" [top]="5"></app-heatmap>    
         </mat-grid-tile>
 
         <mat-grid-tile colspan="1">
-            <app-heatmap [config]="expensiveConfig"></app-heatmap>    
+            <app-heatmap *ngIf="heatmapData" [config]="expensiveConfig" [items]="heatmapData" [ascending]="false" [top]="5"></app-heatmap>    
         </mat-grid-tile>
 
         <mat-grid-tile colspan="1">

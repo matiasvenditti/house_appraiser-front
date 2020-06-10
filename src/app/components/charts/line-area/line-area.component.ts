@@ -45,20 +45,15 @@ export class LineAreaComponent implements OnInit {
 
   ngOnInit(): void {
     this.multi = [this.items.convert()];
-    console.log(this.config);
     this.view = [this.config.width, this.config.height];
-    console.log(this.view);
   }
 
   onSelect(data): void {
-    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
   }
 
   onActivate(data): void {
-    console.log('Activate', JSON.parse(JSON.stringify(data)));
   }
 
   onDeactivate(data): void {
-    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
 }

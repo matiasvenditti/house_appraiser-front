@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {multi} from './data';
 import { ChartConfiguration } from 'src/model/line-area/ChartConfiguration';
+import { HeatmapData } from 'src/model/heatmap/HeatmapData';
+import { HeatmapConvertable } from 'src/model/heatmap/HeatmapConvertable';
 
 @Component({
   selector: 'app-heatmap',
@@ -29,23 +31,30 @@ export class HeatmapComponent implements OnInit {
   @Input()
   config: ChartConfiguration;
 
+  @Input()
+  items: HeatmapConvertable;
+
+  @Input()
+  ascending: boolean;
+
+  @Input()
+  top: number;
+
   constructor() {
     Object.assign(this, { multi });
   }
   ngOnInit(): void {
     this.view = [this.config.width, this.config.height];
+    this.multi = this.items.convert(this.ascending, this.top);
   }
 
   onSelect(data): void {
-    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
   }
   
   onActivate(data): void {
-    console.log('Activate', JSON.parse(JSON.stringify(data)));
   }
 
   onDeactivate(data): void {
-    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
 
 }
