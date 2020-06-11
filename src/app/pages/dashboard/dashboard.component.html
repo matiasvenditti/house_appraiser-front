@@ -46,12 +46,8 @@
             <app-bar-chart *ngIf="zones" [config]="zoneConfig" [items]="zones" [xAxisLabel]="'Zone'" [yAxisLabel]="'Houses'"></app-bar-chart>
         </mat-grid-tile>      
 
-        <mat-grid-tile colspan="1">
-                <app-heatmap *ngIf="heatmapData" [config]="expensiveConfig" [items]="heatmapData" [ascending]="true" [top]="5"></app-heatmap>    
-        </mat-grid-tile>
-
-        <mat-grid-tile colspan="1">
-            <app-heatmap *ngIf="heatmapData" [config]="expensiveConfig" [items]="heatmapData" [ascending]="false" [top]="5"></app-heatmap>    
+        <mat-grid-tile colspan="2">
+                <app-heatmap *ngIf="heatmapData" [config]="heatmapConfig" [items]="heatmapData" [xAxisLabel]="'Zone'" [yAxisLabel]="'Price Ranges [K]'" [ascending]="false" [top]="10"></app-heatmap>    
         </mat-grid-tile>
 
         <mat-grid-tile colspan="1">

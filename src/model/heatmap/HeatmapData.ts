@@ -1,5 +1,5 @@
 import { HeatmapConvertable } from './HeatmapConvertable';
-import { HeatmapElement } from './HeatmapElement';
+import { HeatmapElement, SeriesElement } from './HeatmapElement';
 
 export class HeatmapData implements HeatmapConvertable {
 
@@ -7,7 +7,8 @@ export class HeatmapData implements HeatmapConvertable {
 
     convert(asc: boolean, top: number): HeatmapElement[] {
         const elements: HeatmapElement[] = Object.entries(this.data).map(entry => {
-            return new HeatmapElement(entry[0], entry[1]['series'], entry[1]['total']);
+            const series: SeriesElement[] = entry[1]['series'].map(elem => new SeriesElement(elem.name, elem.value))
+            return new HeatmapElement(entry[0], series, entry[1]['total']);
         });
 
         const ascending = ((a, b) => a.total - b.total);

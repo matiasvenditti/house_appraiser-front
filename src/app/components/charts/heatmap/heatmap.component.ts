@@ -20,8 +20,13 @@ export class HeatmapComponent implements OnInit {
   yAxis: boolean = true;
   showYAxisLabel: boolean = true;
   showXAxisLabel: boolean = true;
-  xAxisLabel: string = 'Country';
-  yAxisLabel: string = 'Year';
+
+  @Input()
+  xAxisLabel: string;
+
+  @Input()
+  yAxisLabel: string;
+  
   view: any[] = [600, 300];
 
   colorScheme = {

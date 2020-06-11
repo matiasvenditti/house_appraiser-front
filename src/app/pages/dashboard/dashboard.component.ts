@@ -28,8 +28,8 @@ export class DashboardComponent implements OnInit {
   coveredConfig: ChartConfiguration = new ChartConfiguration("Covered Surface Pricing", "Curves", 500, 200);
   totalConfig: ChartConfiguration = new ChartConfiguration("Total Surface Pricing", "Curves", 500, 200);
   bathroomConfig: ChartConfiguration = new ChartConfiguration("Bathroom Pricing", "Amount", 1200, 300);
-  zoneConfig: ChartConfiguration = new ChartConfiguration("Zone Distribution", "Zones", 1200, 200);
-  expensiveConfig: ChartConfiguration = new ChartConfiguration("Average Price By Zone", "", 500, 200);
+  zoneConfig: ChartConfiguration = new ChartConfiguration("Zone Distribution", "Zones", 1200, 300);
+  heatmapConfig: ChartConfiguration = new ChartConfiguration("Price By Zone", "", 1200, 300);
   expensiveAverageConfig: ChartConfiguration = new ChartConfiguration("Top Most Expensive", "", 550, 300);
   affordableAverageConfig: ChartConfiguration = new ChartConfiguration("Top Most Affordable", "", 550, 300);
 
