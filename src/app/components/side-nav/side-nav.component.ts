@@ -7,6 +7,7 @@ import {
   animate,
   transition,
 } from '@angular/animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-side-nav',
@@ -35,7 +36,9 @@ export class SideNavComponent implements OnInit {
 
   current: MenuItem;
 
-  constructor() {
+  scrolled: boolean = false;
+
+  constructor(private router: Router) {
 
     this.menuLinks = [
       new MenuItem("assets/menu.svg", "Menu", null),
@@ -65,5 +68,24 @@ export class SideNavComponent implements OnInit {
   toggleAndSelect(link: MenuItem) {
     this.select(link);
     this.toggle();
+  }
+
+  handleScroll(targetId: string) {
+    this.scroll(targetId);
+    this.selectHome();
+    this.router.navigateByUrl('sidenav/(menuRouter:home)');
+  }
+
+  scroll(targetId: string) {
+    const element = document.getElementById(targetId);
+    element.scrollIntoView({behavior: 'smooth'});
+    setTimeout(() => {
+      this.scrolled = true;
+    }, 500);
+  }
+
+  selectHome() {
+    const home = this.menuLinks.find(item => item.label === "Home");
+    this.select(home);
   }
 }

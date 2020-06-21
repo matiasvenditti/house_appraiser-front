@@ -24,6 +24,7 @@ import { SummaryPipe } from './pipes/summary.pipe';
 import { LandingComponent } from './pages/landing/landing.component';
 import { BarChartComponent } from './components/charts/bar-chart/bar-chart.component';
 import { HeatmapComponent } from './components/charts/heatmap/heatmap.component';
+import { CoverComponent } from './components/cover/cover.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { HeatmapComponent } from './components/charts/heatmap/heatmap.component'
     SummaryPipe,
     LandingComponent,
     BarChartComponent,
-    HeatmapComponent
+    HeatmapComponent,
+    CoverComponent
   ],
   imports: [
     BrowserModule,

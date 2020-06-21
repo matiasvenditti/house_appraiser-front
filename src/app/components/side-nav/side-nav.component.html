@@ -1,4 +1,5 @@
-<mat-sidenav-container [autosize]="true">
+<app-cover *ngIf="!scrolled" (onScroll)="handleScroll('app')"></app-cover>
+<mat-sidenav-container id="app" [autosize]="true">
     <mat-sidenav opened mode="side" position="start" disableClose="true">
         <div class="menu-icon-container">
             <div class="action-container unactive" (click)="toggle()">

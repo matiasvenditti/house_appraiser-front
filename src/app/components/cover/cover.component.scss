@@ -1,0 +1,21 @@
+.logo-container {
+    padding: 20px;
+    width: 75%;
+    display: inline-block;
+    // flex-direction: column;
+    text-align: center;
+
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+}
+
+.logo {
+    margin: auto;
+    width: 75%;
+}
+
+.demo-button {
+    margin-top: 40px;
+}
