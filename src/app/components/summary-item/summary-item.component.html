@@ -4,6 +4,6 @@
         <label class="right">{{item.formControl.value | summary}}</label> -->
         <label [ngClass]="{'purple': result}">{{item.label}}</label>
         <label *ngIf="!result" class="right">{{item.value | summary}}</label>
-        <label *ngIf="result" class="right purple">{{item.value | currency:'ARS'}}</label>
+        <label *ngIf="result" class="right purple">{{item.value | currency:'USD'}}</label>
     </div>
 </div>

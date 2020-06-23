@@ -1,34 +1,5 @@
 <div class="background">
     <h1 class="title">Dashboard</h1>
-
-    <!-- <mat-grid-list cols="6">
-        <mat-grid-tile colspan="4" rowspan="2">
-            1
-        </mat-grid-tile>
-
-        <mat-grid-tile colspan="2" rowspan="3">
-            2
-        </mat-grid-tile>
-
-        <mat-grid-tile colspan="4" rowspan="2">
-            3
-        </mat-grid-tile>
-
-        <mat-grid-tile colspan="2" rowspan="3">
-            4
-        </mat-grid-tile>
-
-        <mat-grid-tile colspan="2" rowspan="2">
-            <app-heatmap [config]="expensiveConfig"></app-heatmap>    
-        </mat-grid-tile>
-        
-        <mat-grid-tile colspan="2" rowspan="2">
-            <app-heatmap [config]="expensiveConfig"></app-heatmap>    
-        </mat-grid-tile>
-
-    </mat-grid-list> -->
-
-
     <mat-grid-list cols="2" rowHeight="400px" [gutterSize]="'40px'">
         <mat-grid-tile colspan="1">
             <app-line-area *ngIf="coveredSurface" [config]="coveredConfig" [items]="coveredSurface" [xAxisLabel]="'Surface [m2]'" [yAxisLabel]="'Price [USD]'"></app-line-area>    
