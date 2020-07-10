@@ -7,5 +7,6 @@ export class CardInput {
         public formControl: AbstractControl,
         public controlName: string,
         public placeholder: string,
-        public icon?: string){}
+        public icon?: string,
+        public options?: string[]){}
 }

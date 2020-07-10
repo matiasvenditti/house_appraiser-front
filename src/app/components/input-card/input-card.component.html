@@ -4,9 +4,13 @@
             <div *ngIf="input.icon" class="icon" [inlineSVG]="input.icon"></div>
         </div>
         <div class="input-switch" [ngSwitch]="input.type">
-            <label>{{input?.label}}</label>
+            <label>{{input?.label}} *</label>
             <input #myInput [id]="index" *ngSwitchCase="'number'" type="number" [formControl]="input.formControl" (change)="onChange()" (blur)="onBlur()" placeholder="{{input.placeholder}}">
             <input #myInput [id]="index" *ngSwitchCase="'text'" type="text" [formControl]="input.formControl" (change)="onChange()" (blur)="onBlur()" placeholder="{{input.placeholder}}">
+            <select class="select" #myInput [id]="index" *ngSwitchCase="'select'" [formControl]="input.formControl" (change)="onChange()" (blur)="onBlur()">
+                <option value="" disabled selected>Please select location</option>
+                <option [value]="option" *ngFor="let option of input.options">{{option}}</option>
+            </select>
         </div>
 
         <div class="icon-column-right">

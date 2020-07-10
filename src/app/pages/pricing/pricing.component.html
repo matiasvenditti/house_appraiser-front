@@ -4,7 +4,7 @@
             <h3>Summary</h3>    
             <div class="icon" [inlineSVG]="'assets/icons/exit.svg'"></div>
         </div>
-        <div class="relative">
+        <div *ngIf="doneInitializing" class="relative">
             <app-summary-item [items]="toSummaryItems(dimentions)" [result]="false"></app-summary-item>
             <app-summary-item [items]="toSummaryItems(equipment)" [result]="false"></app-summary-item>
             <app-summary-item [items]="toSummaryItems(bathroom)" [result]="false"></app-summary-item>
@@ -22,7 +22,7 @@
                 <div id="summary" (click)="toggleSummary(summary)" class="toggle icon" [inlineSVG]="'assets/icons/summary.svg'"></div>
             </div>
         
-            <form [formGroup]="prediction" (submit)="predict()">
+            <form [formGroup]="prediction" (submit)="predict()" *ngIf="doneInitializing">
                 <h3>Dimentions</h3>
                 <mat-grid-list [cols]="dimensionCols" rowHeight="100px" [gutterSize]="'40px'">
                     <mat-grid-tile *ngFor="let input of dimentions">
