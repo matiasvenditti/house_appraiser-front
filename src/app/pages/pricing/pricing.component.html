@@ -21,6 +21,8 @@
                 <h1 class="title">Pricing</h1>
                 <div id="summary" (click)="toggleSummary(summary)" class="toggle icon" [inlineSVG]="'assets/icons/summary.svg'"></div>
             </div>
+
+            <p>Please take note that every input marked as (*) is considered required</p>
         
             <form [formGroup]="prediction" (submit)="predict()" *ngIf="doneInitializing">
                 <h3>Dimentions</h3>
