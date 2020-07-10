@@ -13,6 +13,10 @@ export class PredictionService {
 
   constructor(private http: HttpClient) { }
 
+  getZones(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.baseUrl}/zones`);
+  }
+
   predict(prediction: PredictionRequest) {
     return this.http.post(`${this.baseUrl}/predict`, prediction);
   }
