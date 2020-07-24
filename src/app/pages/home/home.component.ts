@@ -7,6 +7,7 @@ import {
   transition,
 } from '@angular/animations';
 import { MenuItem } from 'src/model/MenuItem';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -46,7 +47,7 @@ export class HomeComponent implements OnInit {
 
   current: MenuItem;
 
-  constructor() {
+  constructor(private router: Router) {
 
     this.menuLinks = [
       new MenuItem("../../../assets/menu.svg", "Menu", null),
@@ -77,5 +78,13 @@ export class HomeComponent implements OnInit {
   toggleAndSelect(link: MenuItem) {
     this.select(link);
     this.toggle();
+  }
+
+  redirectPricing() {
+    this.router.navigateByUrl('/sidenav/(menuRouter:pricing)')
+  }
+
+  redirectDashboard() {
+    this.router.navigateByUrl('/sidenav/(menuRouter:dashboard)')
   }
 }

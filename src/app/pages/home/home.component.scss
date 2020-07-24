@@ -3,6 +3,12 @@
     display: inline-block;
 }
 
+.center {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 .column {
     width: 50%;
     float: left;
@@ -10,4 +16,31 @@
 
 .logo {
     width: 100%;
+}
+
+.no-color {
+    background-color: transparent;
+    box-sizing: border-box;
+}
+
+.purple {
+    color: #5843BE;
+}
+
+.margin-bottom{
+    margin-bottom: 40px;
+}
+
+.margin-top{
+    margin-top: 40px;
+}
+
+.container{
+    position: relative;
+    height: 80%;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
 }

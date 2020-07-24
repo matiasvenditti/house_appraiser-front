@@ -11,7 +11,7 @@
             <app-summary-item [items]="toSummaryItems(zone)" [result]="false"></app-summary-item>
             <app-summary-item [items]="toSummaryItems(antiquity)" [result]="false"></app-summary-item>
             <app-summary-item *ngIf="results" [items]="results" [result]="true"></app-summary-item>
-            <button [@emptyFull]="isEmpty ? 'empty' : 'full'" class="button submit" (click)="predict()">Predict</button>
+            <button [disabled]="!prediction.valid" [@emptyFull]="isEmpty ? 'empty' : 'full'" class="button submit" (click)="predict()">Predict</button>
         </div>
 
     </mat-sidenav>
