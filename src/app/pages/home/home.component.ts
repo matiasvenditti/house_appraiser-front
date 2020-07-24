@@ -36,6 +36,13 @@ import { HomeService } from 'src/app/services/home.service';
         animate('0.3s')
       ]),
     ]),
+    
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('0.3s', style({ opacity: 1 })),
+      ])
+    ]),
   ],
 })
 export class HomeComponent implements OnInit {
