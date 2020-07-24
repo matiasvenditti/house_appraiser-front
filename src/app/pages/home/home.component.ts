@@ -8,6 +8,7 @@ import {
 } from '@angular/animations';
 import { MenuItem } from 'src/model/MenuItem';
 import { Router } from '@angular/router';
+import { HomeService } from 'src/app/services/home.service';
 
 @Component({
   selector: 'app-home',
@@ -47,7 +48,7 @@ export class HomeComponent implements OnInit {
 
   current: MenuItem;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private homeService: HomeService) {
 
     this.menuLinks = [
       new MenuItem("../../../assets/menu.svg", "Menu", null),
@@ -81,10 +82,12 @@ export class HomeComponent implements OnInit {
   }
 
   redirectPricing() {
+    this.homeService.next(this.menuLinks[2]);
     this.router.navigateByUrl('/sidenav/(menuRouter:pricing)')
   }
 
   redirectDashboard() {
+    this.homeService.next(this.menuLinks[3]);
     this.router.navigateByUrl('/sidenav/(menuRouter:dashboard)')
   }
 }

@@ -8,6 +8,7 @@ import {
   transition,
 } from '@angular/animations';
 import { Router } from '@angular/router';
+import { HomeService } from 'src/app/services/home.service';
 
 @Component({
   selector: 'app-side-nav',
@@ -38,7 +39,7 @@ export class SideNavComponent implements OnInit {
 
   scrolled: boolean = false;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private homeService: HomeService) {
 
     this.menuLinks = [
       new MenuItem("assets/menu.svg", "Menu", null),
@@ -51,6 +52,16 @@ export class SideNavComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.homeService.observable.subscribe(link => {
+      if (link) {
+        if (link.route == "dashboard") {
+          this.select(this.menuLinks[3]);  
+        }
+        if (link.route == "pricing") {
+          this.select(this.menuLinks[2]);  
+        }
+      }
+    })
   }
 
   toggle() {
